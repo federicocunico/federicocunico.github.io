@@ -16,7 +16,7 @@ My thesis will focus on industrial scene analysis from heterogeneous sensors, wi
 
 ## Publications
 
-Find more at [Google Scholar](https://scholar.google.it/citations?user=Z4Z3QYIAAAAJ&hl=it&oi=ao).
+Find more at [Google Scholar](https://scholar.google.it/citations?user=fvOYgyAAAAAJ&hl=it).
 
 <!-- ## Publications
 
