@@ -25,16 +25,17 @@ const toggleTheme = () => {
 
 </script>
 
-
+<!--
 <template>
   <div class="flex items-center space-x-2">
-    <button id="theme-toggle" @click="toggleTheme"
-      class="relative inline-flex h-8 w-16 items-center rounded-full bg-gray-200 p-1 transition-colors duration-300 dark:bg-gray-700">
-      <!-- Handle -->
-      <span
-        class="h-6 w-6 transform rounded-full bg-white shadow-md transition-transform duration-300 dark:translate-x-8 dark:bg-yellow-400"></span>
+    <button id="theme-toggle" @click="toggleTheme" class="relative inline-flex h-8 w-16 items-center rounded-full bg-gray-200 p-1
+      transition-colors duration-1000 dark:bg-gray-700">
+      <span class="
+        h-6 w-6 rounded-full bg-white shadow-md
+        transform transition-transform duration-300
+        dark:translate-x-8 dark:bg-yellow-400">
+      </span>
 
-      <!-- Icons -->
       <span class="absolute left-2 transition-opacity duration-300 dark:opacity-0">
         <Icon icon="radix-icons:moon" class="h-5 w-5 text-gray-500" />
       </span>
@@ -44,9 +45,9 @@ const toggleTheme = () => {
     </button>
     <label for="theme-toggle" class="sr-only">Toggle theme</label>
   </div>
-</template>
+</template> -->
 
-<!--
+
 <template>
   <Button variant="outline" @click="toggleTheme">
     <Icon icon="radix-icons:moon"
@@ -55,7 +56,7 @@ const toggleTheme = () => {
       class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
     <span class="sr-only">Toggle theme</span>
   </Button>
-</template> -->
+</template>
 
 <!-- <template>
   <DropdownMenu>

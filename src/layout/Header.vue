@@ -6,6 +6,11 @@ import DarkButton from '@/components/DarkButton.vue'
 const toGoogleScholar = () => {
   window.open('https://scholar.google.it/citations?user=fvOYgyAAAAAJ', '_blank')
 }
+
+const toGithub = () => {
+  window.open('https://github.com/federicocunico', '_blank')
+}
+
 </script>
 
 
@@ -16,8 +21,10 @@ div(class="flex justify-between")
   div(class="flex gap-1 items-center")
     RouterLink(:to="{ name: 'home' }")
       Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Home
-    RouterLink(:to="{ name: 'code' }")
-      Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Code
+    //- RouterLink(:to="{ name: 'code' }")
+    //-   Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Code
+    div
+      Button(variant="ghost" @click="toGithub" class="text-[1.05rem] font-medium hover:text-foreground/75") Code
     div
       Button(variant="ghost" @click="toGoogleScholar" class="text-[1.05rem] font-medium hover:text-foreground/75") Papers
     RouterLink(:to="{ name: 'hobbies' }")
