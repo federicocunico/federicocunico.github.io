@@ -28,7 +28,7 @@ jobs:
       - name: List dist folder contents
         run: ls -R dist
 
-       - name: Upload artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./public
