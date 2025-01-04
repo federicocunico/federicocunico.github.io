@@ -58,7 +58,7 @@ const bio = bioString;
         heading='Doctor of Phylosophy - Computer Science'
         subheading='University of Verona'
         date='Oct 2021 - Oct 2024'
-        imagePath='/src/assets/univr_logo.png'
+        imagePath='/univr_logo.png'
         imageClass="h-[70px] w-auto"
         altText='University of Verona'
       )
@@ -76,7 +76,7 @@ const bio = bioString;
         heading="Masters's Degree in Engineering and Computer Science"
         subheading='University of Verona'
         date='Oct 2017 - Jul 2019'
-        imagePath='/src/assets/univr_logo.png'
+        imagePath='/univr_logo.png'
         imageClass="h-[70px] w-auto"
         altText='University of Verona'
       )
