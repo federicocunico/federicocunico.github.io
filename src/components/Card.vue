@@ -32,14 +32,16 @@ const imgRef = ref('')
 // load image from imagePath if it exists
 async function getImagePath() {
   if (!imagePath) return;
-  // import('@/assets/logo.png') // import the image
-  import(/* @vite-ignore */imagePath) // import the image
-    .then((image) => {
-      imgRef.value = image.default
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  imgRef.value = imagePath;
+  // if (!imagePath) return;
+  // // import('@/assets/logo.png') // import the image
+  // import(/* @vite-ignore */imagePath) // import the image
+  //   .then((image) => {
+  //     imgRef.value = image.default
+  //   })
+  //   .catch((error) => {
+  //     console.error(error)
+  //   })
 }
 
 // Call the function to load the image
