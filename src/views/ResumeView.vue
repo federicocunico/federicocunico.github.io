@@ -91,7 +91,7 @@ const bio = bioString;
         heading="Bachelor's Degree in Bioinformatics"
         subheading='University of Verona'
         date='Oct 2014 - Jul 2017'
-        imagePath='/src/assets/univr_logo.png'
+        imagePath='/univr_logo.png'
         imageClass="h-[70px] w-auto"
         altText='University of Verona'
       )
