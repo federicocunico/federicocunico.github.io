@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import DarkButton from '@/components/DarkButton.vue'
+import { computed } from 'vue';
+
+const router = useRouter()
+const currentRoute = computed(() => router.currentRoute.value.name)
 
 const toGoogleScholar = () => {
   window.open('https://scholar.google.it/citations?user=fvOYgyAAAAAJ', '_blank')
@@ -11,14 +15,24 @@ const toGithub = () => {
   window.open('https://github.com/federicocunico', '_blank')
 }
 
+const getLabelText = computed(() => {
+  if (currentRoute.value === 'home') {
+    return 'Resume'
+  } else if (currentRoute.value === 'hobbies') {
+    return 'Federico Cunico'
+  }
+  return "Federico Cunico"  // default
+})
+
+
 </script>
 
 
 <template lang="pug">
 div(class="flex justify-between")
   div
-    div(class="text-xl font-semibold") Curriculum Vitae
-  div(class="flex gap-1 items-center")
+    div(class="text-xl font-semibold") {{ getLabelText }}
+  div(class="flex flex-wrap gap-1 items-center")
     RouterLink(:to="{ name: 'home' }")
       Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Home
     //- RouterLink(:to="{ name: 'code' }")

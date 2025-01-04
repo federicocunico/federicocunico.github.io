@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 
 const props = defineProps({
   title: String
@@ -8,6 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
+
   <section class='flex flex-col gap-y-5 md:flex-row md:gap-y-0'>
     <div class='text-xl font-semibold md:w-1/3'>
       <h2>{{ title }}</h2>
@@ -16,5 +16,6 @@ const props = defineProps({
       <slot />
     </div>
   </section>
+
 
 </template>

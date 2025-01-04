@@ -27,3 +27,7 @@ npm run lint
 ```sh
 npm run deploy
 ```
+
+## Thanks to
+
+https://astro-theme-resume.vercel.app/

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 // Define the props
 const props = defineProps<{
@@ -10,7 +10,7 @@ const props = defineProps<{
   subheading: string
   date: string
   imagePath?: string
-  altText: string
+  altText?: string
   imageClass?: string
 }>()
 
@@ -33,7 +33,7 @@ const imgRef = ref('')
 async function getImagePath() {
   if (!imagePath) return;
   // import('@/assets/logo.png') // import the image
-  import(imagePath) // import the image
+  import(/* @vite-ignore */imagePath) // import the image
     .then((image) => {
       imgRef.value = image.default
     })
@@ -55,19 +55,20 @@ div(
   class='relative rounded-2xl border border-border bg-primary-foreground px-5 py-3 transition-all hover:border-foreground/25 hover:shadow-sm'
   :href="href"
 )
-  template(v-if="imagePath")
-    img(
-      :src="imgRef"
-      :alt="altText"
-      :class="['mb-3 md:absolute md:mb-0', imageClass]"
-      loading="eager"
-    )
 
-  div(class="flex flex-col gap-y-1.5")
-    div(class="flex flex-col gap-y-0.5")
-      h1(class="text-lg font-medium" ) {{ heading }}
-      h2(class="text-muted-foreground") {{ subheading }}
-      h2(class="text-muted-foreground") {{ date }}
+  div(class="flex justify-between items-top")
+    div(class="flex flex-col gap-y-1.5")
+      div(class="flex flex-col gap-y-0.5")
+        h1(class="text-lg font-medium" ) {{ heading }}
+        h2(class="text-muted-foreground") {{ subheading }}
+        h2(class="text-muted-foreground") {{ date }}
+    template(v-if="imagePath")
+      img(
+        :src="imgRef"
+        :alt="altText"
+        :class="imageClass"
+        loading="eager"
+      )
 
   slot
 </template>

@@ -3,6 +3,6 @@
 
 <template lang="pug">
 div(class="flex justify-center")
-  div(class="p-5 w-full md:w-[700px] lg:w-[800px]")
+  div(class="p-5 w-full md:w-[760px] lg:w-[880px]")
     slot
 </template>

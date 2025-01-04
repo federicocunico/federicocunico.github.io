@@ -51,4 +51,5 @@ import { BriefcaseBusiness, MapPin, Clock, Files } from 'lucide-vue-next';
     //- div(class="flex items-center gap-1")
     //-   i.pi.pi-envelope.text-xl
     //-   span
+
 </template>
