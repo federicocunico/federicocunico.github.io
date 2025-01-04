@@ -1,36 +1,33 @@
-# Cunico.Net
-Version with Hugo
+## Project Setup
 
-## Requirements:
-- hugo (with SCSS/SASS support)
-    - Ubuntu:
-        ```[bash]
-        snap install hugo --channel=extended
-        ```
-    - Windows (chocolatey)
-        ```[powershell]
-        choco install hugo-extended
-        ```
+```sh
+npm install
+```
 
+### Compile and Hot-Reload for Development
 
-## Setup:
+```sh
+npm run dev
+```
 
-1. Download the submodules:
+### Type-Check, Compile and Minify for Production
 
-    ```[bash]
-    git submodule update --init
-    ```
+```sh
+npm run build
+```
 
-2. Build website. The results of build will be placed in `public/`
+### Lint with [ESLint](https://eslint.org/)
 
+```sh
+npm run lint
+```
 
-    ```[bash]
-    hugo
-    ```
+### Deploy to GitHub Pages
 
-3. (opt.) Run server for local dev
+```sh
+npm run deploy
+```
 
+## Thanks to
 
-    ```[bash]
-    hugo server -D
-    ```
+https://astro-theme-resume.vercel.app/
