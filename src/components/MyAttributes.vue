@@ -2,6 +2,9 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import { BriefcaseBusiness, MapPin, Clock, Files } from 'lucide-vue-next';
 
+// import { BackpackIcon as BriefcaseBusiness, HomeIcon as} from '@radix-icons/vue';
+
+
 // current time in Italy, only hours and minutes
 // let intervCallback = null as any;
 // const currentTime = ref<string>('');
@@ -38,7 +41,7 @@ import { BriefcaseBusiness, MapPin, Clock, Files } from 'lucide-vue-next';
       //- intersection
       //- span Full-Stack Developer <span>&#8745;</span> AI Researcher
       //- union
-      span Full-Stack Developer <span>&#8746;</span> AI Researcher
+      span Software Engineer <span>&#8746;</span> AI Researcher
 
     div(class="flex items-center gap-1")
       MapPin

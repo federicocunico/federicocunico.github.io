@@ -16,11 +16,14 @@ const toGithub = () => {
 }
 
 const getLabelText = computed(() => {
-  if (currentRoute.value === 'home') {
+  if (currentRoute.value === 'resume') {
     return 'Resume'
   } else if (currentRoute.value === 'hobbies') {
     return 'Federico Cunico'
   }
+  // else if (currentRoute.value === 'home') {
+  //   return 'Home'
+  // }
   return "Federico Cunico"  // default
 })
 
@@ -29,14 +32,14 @@ const getLabelText = computed(() => {
 
 
 <template lang="pug">
-div(class="flex justify-between")
+div(class="flex justify-between mb-12")
   div
     div(class="text-xl font-semibold") {{ getLabelText }}
   div(class="flex flex-wrap gap-1 items-center")
     RouterLink(:to="{ name: 'home' }")
       Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Home
-    //- RouterLink(:to="{ name: 'code' }")
-    //-   Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Code
+    RouterLink(:to="{ name: 'resume' }")
+      Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Resume
     div
       Button(variant="ghost" @click="toGithub" class="text-[1.05rem] font-medium hover:text-foreground/75") Code
     div
