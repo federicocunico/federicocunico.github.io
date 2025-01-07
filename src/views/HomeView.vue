@@ -1,25 +1,23 @@
 <template lang="pug">
   div(
-    class="flex items-start justify-center bg-background dark:bg-background text-foreground min-h-screen"
+    class="flex flex-col items-start justify-center bg-background dark:bg-background text-foreground"
   )
-    div(class="container mx-auto px-6 lg:px-12 text-center lg:text-left")
-      div(class="lg:flex lg:items-center lg:justify-between")
-        div(class="lg:w-2/3 space-y-6")
+    div(class="flex flex-row md:gap-7")
+      //- Text description is a flex-col left aligned
+      div(class="flex flex-col gap-4 items-start text-justify")
           h1(class="text-3xl md:text-6xl font-extrabold leading-tight")
             | {{ name }}
-          h2(class="text-2xl md:text-5xl font-extrabold leading-tight mt-4")
+          h2(class="text-2xl md:text-5xl font-extrabold leading-tight")
             span(class="text-primary") {{ title }}
           p(v-for="d in description" class="text-lg md:text-2xl text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0")
             | {{ d }}
-          div(class="flex flex-wrap gap-4 justify-center lg:justify-start mt-6")
-            <slot name="navigation-buttons" />
-        div(class="mt-10 lg:mt-0 lg:w-1/3 flex justify-center lg:justify-end")
-          div(class="relative w-56 h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-xl bg-gradient-to-b from-primary via-primary/50 to-transparent")
-            img(
-              src="@/assets/avatar.jpg"
-              alt="Avatar"
-              class="object-cover w-full h-full"
-            )
+      div(class="hidden md:flex flex-col items-center justify-center")  
+        div(class="w-[120px] h-[120px] md:w-[170px] md:h-[170px] lg:w-[250px] lg:h-[250px] rounded-full overflow-hidden shadow-xl bg-gradient-to-b from-primary via-primary/50 to-transparent")
+          img(
+            src="@/assets/avatar.jpg"
+            alt="Avatar"
+            class="object-cover w-full h-full xs:hidden block"
+          )
   </template>
 
 <script lang="ts" setup>
