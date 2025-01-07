@@ -1,0 +1,74 @@
+[
+  {
+    "filename": "HorseNebula.jpg",
+    "path": "assets/astronomy",
+    "title": "Horse Nebula",
+    "description": "The Horsehead Nebula is a dark nebula in the constellation Orion. The nebula is located just to the south of the star Alnitak, which is farthest east on Orion's Belt, and is part of the much larger Orion Molecular Cloud Complex. The nebula was first recorded in 1888 by Scottish astronomer Williamina Fleming on photographic plate B2312 taken at the Harvard College Observatory.",
+    "date": "2024-12-16",
+    "equipment": "SeeStar S50",
+    "total_integration": "3h"
+  },
+  {
+    "filename": "M1-Crab.jpg",
+    "path": "assets/astronomy",
+    "title": "Crab Nebula",
+    "description": "The Crab Nebula is a supernova remnant in the constellation of Taurus. The nebula was observed by John Bevis in 1731; it corresponds to a bright supernova recorded by Chinese and Islamic astronomers in 1054. The nebula was also observed later by Charles Messier in 1758. At X-ray and gamma-ray energies above 30 keV, the Crab is generally the strongest persistent source in the sky, with measured flux extending to above 10 TeV.",
+    "date": "2024-12-16",
+    "equipment": "SeeStar S50",
+    "total_integration": "3h"
+  },
+  {
+    "filename": "M3-cluster.jpg",
+    "path": "assets/astronomy",
+    "title": "M3 Cluster",
+    "description": "M3 is a globular cluster of stars in the northern constellation of Canes Venatici. It was discovered by Charles Messier on May 3, 1764, and resolved into stars by William Herschel around 1784. Since then, it has become one of the best-studied globular clusters. Identification of the cluster's unusually large variable star population was begun in 1913 by American astronomer Solon Irving Bailey and new variable members continue to be identified up through 2004.",
+    "date": "2024-12-16",
+    "equipment": "SeeStar S50",
+    "total_integration": "3h"
+  },
+  {
+    "filename": "M33-triangulum.jpg",
+    "path": "assets/astronomy",
+    "title": "M33 Triangulum",
+    "description": "The Triangulum Galaxy is a spiral galaxy approximately 3 million light-years from Earth in the constellation Triangulum. It is catalogued as Messier 33 or NGC 598. The Triangulum Galaxy is the third-largest member of the Local Group of galaxies, behind the Milky Way and the Andromeda Galaxy. It is one of the most distant permanent objects that can be viewed with the naked eye.",
+    "date": "2024-12-16",
+    "equipment": "SeeStar S50",
+    "total_integration": "2h"
+  },
+  {
+    "filename": "M45-Pleiadis.jpg",
+    "path": "assets/astronomy",
+    "title": "M45 Pleiadis",
+    "description": "The Pleiades, also known as the Seven Sisters and Messier 45, are an open star cluster containing middle-aged, hot B-type stars in the north-west of the constellation Taurus. It is among the star clusters nearest to Earth, it is the nearest Messier object to Earth, and is the cluster most obvious to the naked eye in the night sky. The celestial entity has several meanings in different cultures and traditions.",
+    "date": "2024-12-16",
+    "equipment": "SeeStar S50",
+    "total_integration": "1h"
+  },
+  {
+    "filename": "M45-Pleiadis_3h.jpg",
+    "path": "assets/astronomy",
+    "title": "M45 Pleiadis 3h",
+    "description": "The Pleiades, also known as the Seven Sisters and Messier 45, are an open star cluster containing middle-aged, hot B-type stars in the north-west of the constellation Taurus. It is among the star clusters nearest to Earth, it is the nearest Messier object to Earth, and is the cluster most obvious to the naked eye in the night sky. The celestial entity has several meanings in different cultures and traditions.",
+    "date": "2024-12-16",
+    "equipment": "SeeStar S50",
+    "total_integration": "3h"
+  },
+  {
+    "filename": "NGC2024-FlameNebula.jpg",
+    "path": "assets/astronomy",
+    "title": "NGC2024 Flame Nebula",
+    "description": "The Flame Nebula, designated as NGC 2024 and Sh2-277, is an emission nebula in the constellation Orion. It is about 900 to 1,500 light-years away. The bright star Alnitak, the easternmost star in the Belt of Orion, shines energetic ultraviolet light into the Flame and this knocks electrons away from the great clouds of hydrogen gas that reside there. Much of the glow results when the electrons and ionized hydrogen recombine. Additional dark gas and dust lies in front of the bright part of the nebula and this is what causes the dark network that appears in the center of the glowing gas.",
+    "date": "2024-12-24",
+    "equipment": "Mount: Celestron NexStar 130; Camera: SVBony 705c; Optics: SVBony SV550 80mm Apo; Software: SharpCap, Siril, GIMP",
+    "total_integration": "3h"
+  },
+  {
+    "filename": "RosettaNebula.jpg",
+    "path": "assets/astronomy",
+    "title": "Rosetta Nebula",
+    "description": "The Rosette Nebula is a large, circular H II region located near one end of a giant molecular cloud in the Monoceros region of the Milky Way Galaxy. The open cluster NGC 2244 is closely associated with the nebulosity, the stars of the cluster having been formed from the nebula's matter.",
+    "date": "2024-12-16",
+    "equipment": "SeeStar S50",
+    "total_integration": "3h"
+  }
+]

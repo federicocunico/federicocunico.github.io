@@ -1,32 +1,41 @@
 <script lang="ts" setup>
 import { onBeforeMount, ref } from 'vue';
-import FullScreenModal from '@/components/FullScreenModal.vue';
+import FullScreenModal from '@/components/astronomy/FullScreenModal.vue';
+import type { AstronomyEntry } from '@/lib/astronomy_entry';
 
-const images = ref([
-  'HorseNebula.jpg',
-  'M1-Crab.jpg',
-  'M3-cluster.jpg',
-  'M33-triangulum.jpg',
-  'M45-Pleiadis.jpg',
-  'M45-Pleiadis_3h.jpg',
-  'NGC2024-FlameNebula.jpg',
-  'RosettaNebula.jpg',
-  // Add more image file names TODO
-]);
 
-// const images = ref<Array<string>>([]);
+const astronomyEntries = ref<AstronomyEntry[]>([]);
+
+onBeforeMount(() => {
+  import("@/assets/astronomy.json")
+    .then((res) => {
+      let entries = res.default as AstronomyEntry[];
+
+      // Sort entries by date
+      entries.sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+
+      astronomyEntries.value = entries;
+
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
 
 const modalVisible = ref(false);
-const selectedImage = ref<string | null>(null);
+const selectedEntry = ref<AstronomyEntry | null>(null);
 
-const openModal = (image: string) => {
-  selectedImage.value = image;
+const openModal = (entry: AstronomyEntry) => {
+  selectedEntry.value = entry;
   modalVisible.value = true;
 };
 
 const closeModal = () => {
   modalVisible.value = false;
-  selectedImage.value = null;
+  selectedEntry.value = null;
 };
 
 
@@ -36,21 +45,19 @@ const closeModal = () => {
 <template lang="pug">
 div(class="flex flex-wrap gap-4 justify-center items-center")
   div(
-    v-for="(image, index) in images"
+    v-for="(entry, index) in astronomyEntries"
     :key="index"
     class="relative w-48 h-48 bg-gray-200 rounded-lg overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform"
-    @click="openModal(image)"
+    @click="openModal(entry)"
   )
     img(
-      :src="`/astronomy/${image}`"
+      :src="`/astronomy/${entry.filename}`"
       alt="Preview"
       class="object-cover w-full h-full"
     )
   FullScreenModal(
-    v-if="modalVisible && selectedImage"
-    :image="selectedImage"
+    v-if="modalVisible && selectedEntry"
+    :entry="selectedEntry"
     @close="closeModal"
-    :title="selectedImage"
-    :description="`This is a full screen view of the ${selectedImage} image`"
   )
 </template>
