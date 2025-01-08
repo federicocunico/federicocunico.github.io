@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineEmits } from 'vue';
 import { Cross1Icon } from '@radix-icons/vue'
 import type { AstronomyEntry } from '@/lib/astronomy_entry';
 

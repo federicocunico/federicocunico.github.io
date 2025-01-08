@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-import MyAttributes from '@/components/MyAttributes.vue';
-import OpenToWork from '@/components/OpenToWork.vue';
-import Section from '@/components/Section.vue';
-import Card from '@/components/Card.vue';
-import SkillLayout from '@/components/SkillLayout.vue';
+import MyAttributes from '@/components/resume/MyAttributes.vue';
+import OpenToWork from '@/components/resume/OpenToWork.vue';
+import Section from '@/components/resume/Section.vue';
+import Card from '@/components/resume/Card.vue';
+import SkillLayout from '@/components/resume/SkillLayout.vue';
 
-import bioString from "@/md/short_bio.md?raw";
-
-const bio = bioString;
+import { bio } from "@/texts"
 
 </script>
 
@@ -29,7 +27,7 @@ const bio = bioString;
 
     Section(title='About')
       p(class='text-muted-foreground')
-        | {{ bio }}
+        | {{ bio() }}
     Section(title='Experience')
       Card(
         heading='Assistant Researcher'
@@ -45,7 +43,6 @@ const bio = bioString;
         heading='AI Software Engineer'
         subheading='Humatics s.r.l.'
         date='Feb 2020 - Oct 2021'
-        imageClass="h-[50px] w-auto"
       )
         ul(class='ml-4 list-disc text-muted-foreground')
           li

@@ -4,6 +4,9 @@ import RootContainer from './layout/RootContainer.vue';
 import Header from '@/layout/Header.vue'
 import Footer from '@/layout/Footer.vue'
 
+import { getLocale } from "@/texts"
+
+getLocale()
 
 </script>
 

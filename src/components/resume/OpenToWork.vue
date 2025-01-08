@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import {getLocale, _IT_LOCALE} from "@/texts"
+const text = () => {
+  if (getLocale() === _IT_LOCALE) {
+    return 'Disponibile'
+  } else {
+    return 'Open to work'
+  }
+}
+</script>
 
 <template>
   <div
@@ -9,6 +18,6 @@
       <span class='relative inline-flex h-2 w-2 rounded-full bg-green-400'></span>
     </span>
 
-    <p class='font-medium'>Open to work</p>
+    <p class='font-medium'>{{text()}}</p>
   </div>
 </template>

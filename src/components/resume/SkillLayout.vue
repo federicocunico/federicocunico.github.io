@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Badge } from './ui/badge'
+import { Badge } from '../ui/badge'
 const props = defineProps<{
   title: string
   skills: string[]
@@ -15,7 +15,7 @@ const props = defineProps<{
       <!-- <div v-for='(skill, index) in skills' :key='index' class='pill' style="cursor: default;">
         {{ skill }}</div>-->
       <Badge v-for="skill in skills" :key="skill" variant="secondary">{{ skill }}</Badge>
-    </div> 
+    </div>
   </div>
 </template>
 
