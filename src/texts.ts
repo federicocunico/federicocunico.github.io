@@ -36,7 +36,7 @@ const bio = (): string => {
 }
 
 const experiences = (): Array<Experience> => {
-  throw Error('Not implemented yet');
+  return []
   let locale = getLocale();
   if (locale === _IT_LOCALE) {
     return [

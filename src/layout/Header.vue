@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import { RouterLink, useRouter } from 'vue-router';
-import DarkButton from '@/components/DarkButton.vue'
+import DarkButton from '@/components/ui/DarkButton.vue'
 import { computed, ref } from 'vue';
 
 const router = useRouter()
@@ -51,14 +51,14 @@ const toggleMenu = () => {
       RouterLink(:to="{ name: 'hobbies' }")
         Button(variant="ghost" class="text-[1.05rem] font-medium hover:text-foreground/75") Hobbies
       DarkButton
-  
+
     //- Hamburger menu for small screens
     Button(
       class="md:hidden text-[1.5rem] p-2"
       variant="ghost"
       @click="toggleMenu"
     ) ☰
-  
+
     //- Collapsible menu
     transition(name="fade")
       div(v-if="isMenuOpen" class="absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-md p-4 md:hidden")
