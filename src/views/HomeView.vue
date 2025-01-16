@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { selfPresentation, name, position } from '@/texts'
+</script>
+
 <template lang="pug">
   div(
     class="flex flex-col items-start justify-center bg-background dark:bg-background text-foreground"
@@ -18,19 +22,4 @@
             alt="Avatar"
             class="object-cover w-full h-full xs:hidden block"
           )
-  </template>
-
-<script lang="ts" setup>
-import { selfPresentation, name, position } from '@/texts'
-
-// const description = `
-//     I'm a software engineer developer, I work mainly in Vue.js and TypeScript for web development, and Python and C# for scripting and backend.
-//     I have a formal education in Computer Science and AI and I am currently working as AI Researcher at the University of Verona, Italy.
-//   `;
-
-
-</script>
-
-<style scoped>
-/* Optional styles for fine-tuning */
-</style>
+</template>
