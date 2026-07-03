@@ -17,21 +17,34 @@
     body { margin: 0; }
     html { scroll-behavior: smooth; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    nav div::-webkit-scrollbar { display: none; }
+    @media (max-width: 640px) {
+      #esperienza > div > div, #formazione > div > div { grid-template-columns: 1fr !important; gap: 4px !important; }
+      #cv object { height: 60vh !important; }
+    }
+    @media (max-width: 680px) {
+      #astro-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+    @media (max-width: 420px) {
+      #astro-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
   </style>
 </helmet>
 <div style="min-height: 100vh; background: var(--bg, #0B0E16); color: var(--ink, #E9E6DD); font-family: 'Source Serif 4', Georgia, serif; {{ themeVars }}" data-screen-label="Sito Finale — Notturno Accademico">
 
   <!-- NAV -->
   <nav style="position: sticky; top: 0; z-index: 40; background: var(--navbg, rgba(11,14,22,0.85)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule, #232838);">
-    <div style="max-width: 900px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
-      <a href="#top" style="font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--accent, #D4B36A); text-decoration: none;">Federico Cunico</a>
-      <div style="display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap;">
-        <a href="#ricerca" style="font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.research }}</a>
-        <a href="#pubblicazioni" style="font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.publications }}</a>
-        <a href="#esperienza" style="font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.experience }}</a>
-        <a href="#passioni" style="font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.passions }}</a>
-        <a href="#cv" style="font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">CV</a>
-        <a href="#contatti" style="font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.contact }}</a>
+    <div style="max-width: 900px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 12px;">
+      <a href="#top" style="flex-shrink: 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--accent, #D4B36A); text-decoration: none;">Federico Cunico</a>
+      <div style="display: flex; align-items: baseline; gap: 18px; flex-wrap: nowrap; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;">
+        <a href="#ricerca" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.research }}</a>
+        <a href="#pubblicazioni" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.publications }}</a>
+        <a href="#esperienza" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.experience }}</a>
+        <a href="#passioni" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.passions }}</a>
+        <a href="#cv" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">CV</a>
+        <a href="#contatti" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.contact }}</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
         <button onClick="{{ toggleLang }}" style="font-family: 'Public Sans', sans-serif; font-size: 11px; letter-spacing: 0.12em; font-weight: 600; border: 1px solid var(--rule, #232838); background: transparent; color: inherit; border-radius: 999px; padding: 4px 10px; cursor: pointer;" style-hover="border-color: var(--accent, #D4B36A); color: var(--accent, #D4B36A);">{{ langLabel }}</button>
         <button onClick="{{ toggleTheme }}" title="Light / dark" style="font-size: 13px; border: 1px solid var(--rule, #232838); background: transparent; color: inherit; border-radius: 999px; padding: 4px 9px; cursor: pointer; line-height: 1;" style-hover="border-color: var(--accent, #D4B36A); color: var(--accent, #D4B36A);">{{ themeIcon }}</button>
       </div>
@@ -42,7 +55,7 @@
   <header id="top" style="position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; background-image: url('public/astronomy/HorseNebula.jpg'); background-size: cover; background-position: center; opacity: var(--heroImgOpacity, 0.35);"></div>
     <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 20%, var(--bg, #0B0E16) 96%);"></div>
-    <div style="position: relative; max-width: 900px; margin: 0 auto; padding: 120px 24px 84px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;">
+    <div style="position: relative; max-width: 900px; margin: 0 auto; padding: clamp(64px, 18vw, 120px) 24px clamp(48px, 12vw, 84px) 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px;">
       <img src="src/assets/avatar.jpg" alt="Federico Cunico" style="width: 128px; height: 128px; border-radius: 999px; object-fit: cover; border: 2px solid var(--accent, #D4B36A); box-shadow: 0 0 40px rgba(0,0,0,0.5);" />
       <h1 style="margin: 0; font-size: clamp(44px, 7vw, 64px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.05; text-shadow: 0 2px 24px rgba(0,0,0,0.4);">Federico Cunico<span style="font-size: 0.5em; font-weight: 400; color: var(--muted, #9AA0AE);">, PhD</span></h1>
       <p style="margin: 0; font-family: 'Public Sans', sans-serif; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent, #D4B36A);">{{ t.heroRole }}</p>
@@ -66,10 +79,10 @@
   <div style="max-width: 780px; margin: 0 auto; padding: 0 24px;">
 
     <!-- RESEARCH (layout A) -->
-    <section id="ricerca" style="padding: 56px 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Ricerca">
+    <section id="ricerca" style="padding: clamp(36px, 9vw, 56px) 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Ricerca">
       <h2 style="margin: 0 0 8px 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--muted, #9AA0AE);">{{ t.researchTitle }}</h2>
-      <p style="margin: 0 0 28px 0; font-size: 25px; font-weight: 400; font-style: italic; line-height: 1.4; max-width: 580px; text-wrap: pretty;">{{ t.researchIntro }}</p>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <p style="margin: 0 0 28px 0; font-size: clamp(20px, 6vw, 25px); font-weight: 400; font-style: italic; line-height: 1.4; max-width: 580px; text-wrap: pretty;">{{ t.researchIntro }}</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px;">
         <sc-for list="{{ researchTopics }}" as="topic" hint-placeholder-count="3">
           <div style="display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--accent, #D4B36A); padding-top: 14px;">
             <h3 style="margin: 0; font-size: 19px; font-weight: 600;">{{ topic.title }}</h3>
@@ -80,7 +93,7 @@
     </section>
 
     <!-- PUBLICATIONS (layout A + live da Semantic Scholar) -->
-    <section id="pubblicazioni" style="padding: 56px 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Pubblicazioni">
+    <section id="pubblicazioni" style="padding: clamp(36px, 9vw, 56px) 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Pubblicazioni">
       <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 6px;">
         <h2 style="margin: 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--muted, #9AA0AE);">{{ t.pubsTitle }}</h2>
         <sc-if value="{{ pubsAreLive }}" hint-placeholder-val="{{ false }}">
@@ -112,7 +125,7 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="esperienza" style="padding: 56px 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Esperienza">
+    <section id="esperienza" style="padding: clamp(36px, 9vw, 56px) 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Esperienza">
       <h2 style="margin: 0 0 24px 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--muted, #9AA0AE);">{{ t.experienceTitle }}</h2>
       <div style="display: flex; flex-direction: column;">
         <sc-for list="{{ experience }}" as="job" hint-placeholder-count="3">
@@ -129,7 +142,7 @@
     </section>
 
     <!-- EDUCATION -->
-    <section id="formazione" style="padding: 56px 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Formazione">
+    <section id="formazione" style="padding: clamp(36px, 9vw, 56px) 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Formazione">
       <h2 style="margin: 0 0 24px 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--muted, #9AA0AE);">{{ t.educationTitle }}</h2>
       <div style="display: flex; flex-direction: column;">
         <sc-for list="{{ education }}" as="edu" hint-placeholder-count="4">
@@ -146,11 +159,11 @@
     </section>
 
     <!-- PASSIONS -->
-    <section id="passioni" style="padding: 56px 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Passioni">
+    <section id="passioni" style="padding: clamp(36px, 9vw, 56px) 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Passioni">
       <h2 style="margin: 0 0 8px 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--muted, #9AA0AE);">{{ t.passionsTitle }}</h2>
       <h3 style="margin: 0 0 10px 0; font-size: 26px; font-weight: 600;">{{ t.astroTitle }}</h3>
       <p style="margin: 0 0 24px 0; font-size: 17px; font-weight: 300; line-height: 1.7; max-width: 620px; color: var(--soft, #C9CBD1); text-wrap: pretty;">{{ t.astroText }}</p>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+      <div id="astro-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
         <sc-for list="{{ astro }}" as="photo" hint-placeholder-count="8">
           <figure onClick="{{ photo.open }}" style="margin: 0; cursor: zoom-in; display: flex; flex-direction: column; gap: 6px;">
             <img src="{{ photo.src }}" alt="{{ photo.title }}" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; display: block; border: 1px solid var(--rule, #232838); transition: transform 0.25s, border-color 0.25s;" style-hover="transform: translateY(-3px); border-color: var(--rule2, rgba(212,179,106,0.4));" />
@@ -166,7 +179,7 @@
     </section>
 
     <!-- CV PDF -->
-    <section id="cv" style="padding: 56px 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Curriculum Vitae">
+    <section id="cv" style="padding: clamp(36px, 9vw, 56px) 0; border-top: 1px solid var(--rule, #232838);" data-screen-label="Curriculum Vitae">
       <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
         <h2 style="margin: 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--muted, #9AA0AE);">{{ t.cvTitle }}</h2>
         <a href="{{ cvPdf }}" target="_blank" style="font-family: 'Public Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--accent, #D4B36A); text-decoration: none; border-bottom: 1px solid var(--rule2, rgba(212,179,106,0.4));" style-hover="border-bottom-color: var(--accent, #D4B36A);">{{ t.downloadCv }} ↓</a>
@@ -183,16 +196,16 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contatti" style="padding: 56px 0 72px 0; border-top: 1px solid var(--rule, #232838); text-align: center;" data-screen-label="Contatti">
+    <section id="contatti" style="padding: clamp(36px, 9vw, 56px) 0 clamp(48px, 11vw, 72px) 0; border-top: 1px solid var(--rule, #232838); text-align: center;" data-screen-label="Contatti">
       <h2 style="margin: 0 0 12px 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--muted, #9AA0AE);">{{ t.contactTitle }}</h2>
-      <p style="margin: 0 auto 22px auto; font-size: 25px; font-weight: 300; font-style: italic; line-height: 1.5; max-width: 480px; text-wrap: pretty;">{{ t.contactText }}</p>
+      <p style="margin: 0 auto 22px auto; font-size: clamp(20px, 6vw, 25px); font-weight: 300; font-style: italic; line-height: 1.5; max-width: 480px; text-wrap: pretty;">{{ t.contactText }}</p>
       <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
         <a href="https://www.linkedin.com/in/federico-cunico/" target="_blank" style="font-family: 'Public Sans', sans-serif; font-size: 13.5px; font-weight: 600; background: var(--accent, #D4B36A); color: #14120A; text-decoration: none; padding: 11px 24px; border-radius: 999px;" style-hover="opacity: 0.88;">LinkedIn</a>
         <a href="{{ cvPdf }}" target="_blank" style="font-family: 'Public Sans', sans-serif; font-size: 13.5px; font-weight: 600; border: 1px solid var(--accent, #D4B36A); color: var(--accent, #D4B36A); text-decoration: none; padding: 11px 24px; border-radius: 999px;" style-hover="background: var(--accent, #D4B36A); color: #14120A;">{{ t.downloadCv }}</a>
       </div>
     </section>
 
-    <footer style="border-top: 1px solid var(--rule, #232838); padding: 20px 0 32px 0; display: flex; justify-content: space-between; align-items: baseline;">
+    <footer style="border-top: 1px solid var(--rule, #232838); padding: 20px 0 32px 0; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
       <span style="font-family: 'Public Sans', sans-serif; font-size: 12px; color: var(--muted, #9AA0AE);">© 2026 Federico Cunico</span>
       <span style="font-family: 'Public Sans', sans-serif; font-size: 12px; color: var(--muted, #9AA0AE);">Verona, Italy</span>
     </footer>
