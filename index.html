@@ -24,6 +24,11 @@
     }
     @media (max-width: 680px) {
       #astro-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      #nav-links { display: none !important; }
+      #nav-hamburger { display: inline-flex !important; }
+    }
+    @media (min-width: 681px) {
+      #nav-menu-panel, #nav-menu-backdrop { display: none !important; }
     }
     @media (max-width: 420px) {
       #astro-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -36,7 +41,7 @@
   <nav style="position: sticky; top: 0; z-index: 40; background: var(--navbg, rgba(11,14,22,0.85)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule, #232838);">
     <div style="max-width: 900px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 12px;">
       <a href="#top" style="flex-shrink: 0; font-family: 'Public Sans', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--accent, #D4B36A); text-decoration: none;">Federico Cunico</a>
-      <div style="display: flex; align-items: baseline; gap: 18px; flex-wrap: nowrap; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;">
+      <div id="nav-links" style="display: flex; align-items: baseline; gap: 18px; flex-wrap: nowrap; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;">
         <a href="#ricerca" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.research }}</a>
         <a href="#pubblicazioni" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.publications }}</a>
         <a href="#esperienza" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.experience }}</a>
@@ -45,11 +50,25 @@
         <a href="#contatti" style="flex-shrink: 0; white-space: nowrap; font-size: 15px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;" style-hover="color: var(--accent, #D4B36A);">{{ t.nav.contact }}</a>
       </div>
       <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+        <button id="nav-hamburger" onClick="{{ toggleMenu }}" title="Menu" aria-label="Menu" style="display: none; font-size: 15px; border: 1px solid var(--rule, #232838); background: transparent; color: inherit; border-radius: 999px; padding: 4px 10px; cursor: pointer; line-height: 1;" style-hover="border-color: var(--accent, #D4B36A); color: var(--accent, #D4B36A);">{{ menuIcon }}</button>
         <button onClick="{{ toggleLang }}" style="font-family: 'Public Sans', sans-serif; font-size: 11px; letter-spacing: 0.12em; font-weight: 600; border: 1px solid var(--rule, #232838); background: transparent; color: inherit; border-radius: 999px; padding: 4px 10px; cursor: pointer;" style-hover="border-color: var(--accent, #D4B36A); color: var(--accent, #D4B36A);">{{ langLabel }}</button>
         <button onClick="{{ toggleTheme }}" title="Light / dark" style="font-size: 13px; border: 1px solid var(--rule, #232838); background: transparent; color: inherit; border-radius: 999px; padding: 4px 9px; cursor: pointer; line-height: 1;" style-hover="border-color: var(--accent, #D4B36A); color: var(--accent, #D4B36A);">{{ themeIcon }}</button>
       </div>
     </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div id="nav-menu-panel" style="position: absolute; top: 100%; left: 0; right: 0; display: flex; flex-direction: column; background: var(--navbg, rgba(11,14,22,0.85)); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule, #232838); padding: 4px 24px 12px 24px;">
+        <a href="#ricerca" onClick="{{ closeMenu }}" style="padding: 14px 0; font-size: 16px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none; border-bottom: 1px solid var(--rule, #232838);">{{ t.nav.research }}</a>
+        <a href="#pubblicazioni" onClick="{{ closeMenu }}" style="padding: 14px 0; font-size: 16px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none; border-bottom: 1px solid var(--rule, #232838);">{{ t.nav.publications }}</a>
+        <a href="#esperienza" onClick="{{ closeMenu }}" style="padding: 14px 0; font-size: 16px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none; border-bottom: 1px solid var(--rule, #232838);">{{ t.nav.experience }}</a>
+        <a href="#passioni" onClick="{{ closeMenu }}" style="padding: 14px 0; font-size: 16px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none; border-bottom: 1px solid var(--rule, #232838);">{{ t.nav.passions }}</a>
+        <a href="#cv" onClick="{{ closeMenu }}" style="padding: 14px 0; font-size: 16px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none; border-bottom: 1px solid var(--rule, #232838);">CV</a>
+        <a href="#contatti" onClick="{{ closeMenu }}" style="padding: 14px 0; font-size: 16px; font-style: italic; color: var(--muted, #9AA0AE); text-decoration: none;">{{ t.nav.contact }}</a>
+      </div>
+    </sc-if>
   </nav>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div id="nav-menu-backdrop" onClick="{{ closeMenu }}" style="position: fixed; inset: 0; z-index: 39;"></div>
+  </sc-if>
 
   <!-- HERO (da C) -->
   <header id="top" style="position: relative; overflow: hidden;">
@@ -227,7 +246,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;it&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'it'&quot;,&quot;section&quot;:&quot;Comportamento&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark' | 'light'&quot;,&quot;section&quot;:&quot;Comportamento&quot;},&quot;pubsSort&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;recent&quot;,&quot;cited&quot;],&quot;default&quot;:&quot;recent&quot;,&quot;tsType&quot;:&quot;'recent' | 'cited'&quot;,&quot;section&quot;:&quot;Pubblicazioni&quot;},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#D4B36A&quot;,&quot;#9FB8D4&quot;,&quot;#C9938A&quot;,&quot;#A4C4A8&quot;],&quot;default&quot;:&quot;#9FB8D4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colori&quot;}}">
 class Component extends DCLogic {
-  state = { lang: null, dark: null, lightbox: null, data: null, livePubs: null, pubsSort: null };
+  state = { lang: null, dark: null, lightbox: null, data: null, livePubs: null, pubsSort: null, menuOpen: false };
 
   componentDidMount() {
     import('./site_content.js').then(m => {
@@ -303,6 +322,10 @@ class Component extends DCLogic {
       themeIcon: dark ? '☀' : '☾',
       toggleLang: () => this.setState({ lang: lang === 'en' ? 'it' : 'en' }),
       toggleTheme: () => this.setState({ dark: !dark }),
+      menuOpen: this.state.menuOpen,
+      menuIcon: this.state.menuOpen ? '✕' : '☰',
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
       researchTopics: t ? t.researchTopics : [],
       experience: t ? t.experience : [],
       education: t ? t.education : [],
