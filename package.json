@@ -1,0 +1,21 @@
+{
+  "name": "federicocunico-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "generate:cv": "node scripts/generate-cv.mjs",
+    "generate:cv:it": "node scripts/generate-cv.mjs --it",
+    "build": "npm run generate:cv && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pdfmake": "^0.2.20",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7"
+  }
+}
