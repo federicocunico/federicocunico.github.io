@@ -1,139 +1,72 @@
-# Personal website (Vue + Vite)
+# Federico Cunico — portfolio
 
-Static personal site for Federico Cunico, built with Vue 3 and Vite, deployed to GitHub Pages.
+Personal portfolio site (Vue 3 + Vite + vue-router), deployed to GitHub Pages.
+Six pages: index, research, astrophotography, photography, music, CV. Bilingual (IT/EN), light theme by default with a dark toggle.
 
 ## Quick start
 
 ```bash
 npm install
-npm run dev      # optimizes avatar + local preview at http://localhost:5173
-npm run build    # optimizes avatar + generates CV + production build in dist/
-npm run preview  # preview the production build
+npm run dev      # generates thumbnails, then serves http://localhost:5173
+npm run build    # thumbnails + CV PDFs + production build in dist/
+npm run preview  # serve the production build
 ```
 
-Push to `main` — GitHub Actions builds and deploys automatically.
+Or with make: `make serve` (hot-reload dev server on http://localhost:4173; `make serve-build` builds and serves the production output instead), `make test`
+(build + check that every page, media file and CV responds and IT/EN texts match),
+`make help` for the full list.
 
-## Where to edit content
+Push to `main`: GitHub Actions builds and deploys. `dist/404.html` is a copy of
+`index.html`, so direct links such as `/astrophotography` work on GitHub Pages.
 
-**Almost everything lives in one file:** [`src/siteContent.js`](src/siteContent.js)
+## Pages
 
-| What to change | Where |
+| Route | Page |
 |---|---|
-| Texts (EN + IT) | `CONTENT.en` and `CONTENT.it` in `src/siteContent.js` |
-| Work experience | `CONTENT.*.experience` — add/edit objects `{ role, org, period, text }` |
-| Education | `CONTENT.*.education` — same pattern |
-| Research topics | `CONTENT.*.researchTopics` |
-| Gallery photos | `ASTRO` array + image file in `public/astronomy/` |
-| External links | `LINKS` object |
-| CV path, hero image, settings | `CONFIG` object |
+| `/` | Index: intro, portrait, links to every section |
+| `/research` | Topics and publications (live from Semantic Scholar, newest first) |
+| `/astrophotography` | Latest capture, filterable gallery, lightbox with acquisition data and original download |
+| `/photography` | Series gallery with lightbox |
+| `/music` | Album, track list, player that keeps playing across pages |
+| `/cv` | Profile, experience, education, publications, interests, links, PDF preview and download (IT/EN, regenerated from siteContent.js on every build) |
 
-Keep **both** `CONTENT.en` and `CONTENT.it` in sync when you change strings.
+## Content
 
-## Generate / update the CV (PDF)
+All texts and media lists live in [`src/siteContent.js`](src/siteContent.js).
+Keep `CONTENT.en` and `CONTENT.it` in sync.
 
-The CV is **auto-generated** from `src/siteContent.js` using [pdfmake](https://pdfmake.github.io/) — no manual PDF editing needed.
-
-### What gets included
-
-- Name, role, location, links
-- Summary (from `heroIntro`)
-- Research topics
-- Experience and education (from `CONTENT`)
-- Selected publications (from `PUBLICATIONS`)
-
-### Commands
-
-```bash
-npm run generate:cv       # English PDF → public/assets/cv.pdf
-npm run generate:cv:it    # Italian PDF → public/assets/cv.pdf
-npm run build             # runs avatar optimization + generate:cv + Vite build
-```
-
-### Workflow
-
-1. Edit CV content in `src/siteContent.js` (experience, education, publications, texts).
-2. Run `npm run generate:cv` (or `npm run build`).
-3. The embedded CV on the site updates from `public/assets/cv.pdf`.
-
-### On the live site
-
-- Click **Generate PDF** in the CV section to download a fresh PDF in the **current language** (EN/IT), without rebuilding.
-- Click **Download CV** to open the pre-built PDF from the last deploy.
-
-### Optional: manual PDF override
-
-You can still drop a hand-crafted PDF at `public/assets/cv.pdf` — but running `npm run generate:cv` will overwrite it.
-
-## Profile photo
-
-1. Replace the photo at [`src/assets/avatar.jpg`](src/assets/avatar.jpg).
-2. Tune the circular crop in `src/siteContent.js` → `CONFIG.avatarCrop`:
-
-```js
-avatarCrop: {
-  x: 50,     // horizontal focal point (0 = left, 100 = right)
-  y: 28,     // vertical focal point (0 = top, 100 = bottom)
-  zoom: 1.18 // zoom inside the circle (>1 = closer)
-}
-```
-
-Changes apply instantly with hot reload during `npm run dev` — no rebuild needed for crop tweaks.
-
-## Add a gallery photo
-
-1. Copy the `.jpg` into [`public/astronomy/`](public/astronomy/).
-2. Add one entry to the `ASTRO` array in `src/siteContent.js`:
-
-```js
-{ src: '/astronomy/MyPhoto.jpg', title: 'My Nebula', date: '2025-01-01', equipment: '…', integration: '2h' }
-```
-
-## Publications
-
-Publications are fetched live from Semantic Scholar using `CONFIG.scholarAuthorName`. If the API is unavailable, the site falls back to the static `PUBLICATIONS` list in `src/siteContent.js`.
-
-## Project structure
+## Media — one folder per section
 
 ```
-index.html              Vite entry
-src/
-  siteContent.js        ← main content file (edit this)
-  lib/cvPdfTemplate.js  ← CV PDF layout template
-  App.vue               page layout
-  components/           section components
-  assets/avatar.jpg     profile photo (crop tuned via CONFIG.avatarCrop)
-scripts/
-  generate-cv.mjs       build-time CV PDF generator
 public/
-  astronomy/            gallery images
-  assets/cv.pdf         CV PDF (auto-generated)
+  astro/full/<file>.jpg                 originals (loaded only when opened)
+  astro/thumbs/<file>.webp              generated
+  photography/<series>/full/<file>.jpg  originals
+  photography/<series>/thumbs/          generated
+  music/<album>/<file>.mp3              streamed, preload="none"
+  research/cv-{en,it}.pdf               generated from siteContent.js
+  profile/portrait-*.webp               generated from assets-src/portrait.jpg
 ```
 
-## Deployment (GitHub Actions)
+Generated files are git-ignored and rebuilt by `npm run media` / `npm run generate:cv`
+(both run automatically in `dev` and `build`).
 
-The workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on every push to `main`:
+### Add an astrophoto
 
-1. `npm ci` — install dependencies
-2. `npm run build` — generate CV PDF, build Vite app to `dist/`
-3. Deploy `dist/` to GitHub Pages
+1. Put the original in `public/astro/full/`.
+2. Add an entry to `ASTRO` (`file`, `title`, `catalog`, `group`, `type`, `date`, `integration`, `equipment`).
 
-### One-time GitHub setup
+### Add a photography series
 
-In your repo on GitHub: **Settings → Pages → Build and deployment → Source** must be set to **GitHub Actions** (not “Deploy from a branch”).
+1. Put the originals in `public/photography/<id>/full/`.
+2. Add `{ id, title: { en, it }, items: [{ file, title, place, year }] }` to `PHOTOGRAPHY`.
 
-### Manual deploy check
+### Add music
 
-```bash
-npm ci
-npm run build
-npm run preview   # open the printed URL and verify
-```
+1. Put the audio files in `public/music/legacy/` (or a new album folder).
+2. Add `{ title, file, duration }` entries to the album's `tracks` in `MUSIC` (`duration` in seconds is optional).
 
-## Assets (if migrating from the old site)
+### Portrait
 
-| Old path | New path |
-|---|---|
-| `assets/cv.pdf` | `public/assets/cv.pdf` (auto-generated) |
-| `src/assets/avatar.jpg` | `src/assets/avatar.jpg` (master source) |
-| `public/astronomy/*.jpg` | `public/astronomy/*.jpg` (unchanged) |
-| `favicon.ico` (root) | `public/favicon.ico` |
+The 4:5 crop is computed from `assets-src/portrait.jpg` in `scripts/build-media.mjs`
+(box expressed as fractions of the original frame).

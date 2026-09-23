@@ -49,6 +49,7 @@ function publicationEntry(pub, index) {
 export function buildCvDocDefinition({ t, links, config, publications, profile }) {
   const contactLine = [
     config.location,
+    links.site,
     links.linkedin,
     links.scholar,
     links.github,
@@ -102,8 +103,17 @@ export function buildCvDocDefinition({ t, links, config, publications, profile }
       })
     ),
 
+    sectionTitle(t.cvInterestsTitle),
+    ...[[t.astroTitle, t.astroText], [t.musicTitle, t.musicText]].map(([title, text]) => ({
+      margin: [0, 0, 0, 6],
+      stack: [
+        { text: title, style: 'topicTitle' },
+        { text, style: 'topicBody', margin: [0, 2, 0, 0] }
+      ]
+    })),
+
     sectionTitle(t.pubsTitle),
-    ...publications.map((pub, index) => publicationEntry(pub, index)),
+    ...[...publications].sort((a, b) => Number(b.year) - Number(a.year)).map((pub, index) => publicationEntry(pub, index)),
     {
       text: `${t.pubsNote}: ${links.scholar}`,
       style: 'footnote',

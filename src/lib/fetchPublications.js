@@ -29,11 +29,10 @@ export async function fetchPublications(scholarAuthorName) {
   return papers.length ? papers : null
 }
 
-export function mapLivePublications(papers, lang, sort, count) {
-  const sorted = [...papers].sort((a, b) =>
-    sort === 'cited'
-      ? (b.citationCount || 0) - (a.citationCount || 0)
-      : (b.year || 0) - (a.year || 0)
+// Most recent first; papers from the same year by citations.
+export function mapLivePublications(papers, citationsLabel, count) {
+  const sorted = [...papers].sort(
+    (a, b) => (b.year || 0) - (a.year || 0) || (b.citationCount || 0) - (a.citationCount || 0)
   )
 
   return sorted.slice(0, count).map((p) => ({
@@ -41,11 +40,11 @@ export function mapLivePublications(papers, lang, sort, count) {
     title: p.title,
     authors: formatAuthors(p.authors),
     venue: p.venue || '—',
-    cites: `${p.citationCount ?? 0}${lang === 'it' ? ' citazioni' : ' citations'}`
+    cites: `${p.citationCount ?? 0} ${citationsLabel}`
   }))
 }
 
 export function mapStaticPublications(publications, count) {
   const sorted = [...publications].sort((a, b) => Number(b.year) - Number(a.year))
-  return sorted.slice(0, count).map((p) => ({ ...p, cites: '' }))
+  return sorted.slice(0, count).map((p) => ({ ...p, venue: p.short || p.venue, cites: '' }))
 }
