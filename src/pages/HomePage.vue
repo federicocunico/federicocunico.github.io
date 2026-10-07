@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, h } from 'vue'
 import { useLang } from '../composables/useLang'
 import { CONFIG, ASTRO, PHOTOGRAPHY, MUSIC } from '../siteContent'
 import { astroThumb, photoThumb } from '../lib/media'
@@ -27,7 +27,7 @@ const album = MUSIC[0]
     <div class="kicker mono rule-top rise"><span>{{ t.homeKicker }} — {{ new Date().getFullYear() }}</span><span>Verona, IT<span class="coords"> · 45.44° N 10.99° E</span></span></div>
 
     <div class="intro">
-      <h1 class="name rise-2">Federico<br />Cunico</h1>
+      <h1 class="name rise-2">Federico<br />Cunico</h1><br /><h2 class="name rise-2">PhD</h2>
       <p class="statement rise-3">{{ t.homeIntro }}</p>
       <div class="facts rise-3">
         <div class="fact"><span class="mono">{{ t.homeRoleLabel }}</span><span>{{ t.homeRole }}</span></div>
@@ -43,7 +43,7 @@ const album = MUSIC[0]
         sizes="(max-width: 720px) 100vw, 34vw"
         width="640"
         height="800"
-        alt="Federico Cunico"
+        alt="Federico Cunico, PhD"
         fetchpriority="high"
       />
       <figcaption class="mono"><span>{{ t.portraitCaption }}</span><span>F. Cunico, PhD</span></figcaption>
