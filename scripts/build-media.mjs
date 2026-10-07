@@ -22,14 +22,22 @@ function isStale(src, out) {
   return !fs.existsSync(out) || fs.statSync(out).mtimeMs < fs.statSync(src).mtimeMs
 }
 
-async function thumbs(fullDir, thumbDir, width = 640) {
+// Gallery thumbs: wide enough for retina tiles (~2× a ~640px column) and sharper encode.
+const THUMB_WIDTH = 1280
+const THUMB_QUALITY = 86
+
+async function thumbs(fullDir, thumbDir, width = THUMB_WIDTH) {
   if (!fs.existsSync(fullDir)) return
   fs.mkdirSync(thumbDir, { recursive: true })
   for (const name of fs.readdirSync(fullDir).filter((n) => IMAGE.test(n))) {
     const src = path.join(fullDir, name)
     const out = path.join(thumbDir, name.replace(IMAGE, '.webp'))
     if (!isStale(src, out)) continue
-    await sharp(src).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: 72 }).toFile(out)
+    await sharp(src)
+      .rotate()
+      .resize({ width, withoutEnlargement: true })
+      .webp({ quality: THUMB_QUALITY, effort: 5 })
+      .toFile(out)
     made++
   }
 }

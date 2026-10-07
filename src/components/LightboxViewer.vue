@@ -47,7 +47,8 @@ onBeforeUnmount(() => {
     <div v-if="item" class="lightbox" role="dialog" aria-modal="true" :aria-label="item.title">
       <div class="stage" @click.self="close">
         <div class="frame" @click="close">
-          <img :src="item.thumb" :alt="item.title" class="img low" />
+          <!-- Blurred thumb while the full image loads; hidden once the full is ready. -->
+          <img v-show="!loaded" :src="item.thumb" alt="" class="img low" aria-hidden="true" />
           <img :key="item.full" :src="item.full" :alt="item.title" class="img full" :class="{ on: loaded }" @load="loaded = true" />
         </div>
       </div>
@@ -93,9 +94,9 @@ onBeforeUnmount(() => {
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
 .stage { min-height: 0; display: flex; align-items: center; justify-content: center; padding: 48px; cursor: zoom-out; }
-.frame { position: relative; display: grid; max-width: 100%; max-height: 100%; }
+.frame { position: relative; display: grid; place-items: center; max-width: 100%; max-height: 100%; }
 .img { grid-area: 1 / 1; max-width: 100%; max-height: calc(100vh - 96px); max-height: calc(100dvh - 96px); object-fit: contain; }
-.low { filter: blur(6px); transform: scale(1.001); }
+.low { width: 100%; height: 100%; filter: blur(12px); transform: scale(1.04); pointer-events: none; }
 .full { opacity: 0; transition: opacity .35s; }
 .full.on { opacity: 1; }
 
