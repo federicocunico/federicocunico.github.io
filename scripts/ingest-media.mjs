@@ -153,9 +153,10 @@ async function ingestPhotography() {
       const ok = await processOne(src, out)
       if (!ok && !fs.existsSync(out)) continue
       const side = loadSidecar(dir, name)
+      // No default title from filename — captions only when a sidecar provides them.
       items.push({
         file: outName,
-        title: side.title || titleFromStem(stemOf(name)),
+        ...(side.title ? { title: side.title } : {}),
         ...(side.place ? { place: side.place } : {}),
         ...(side.year ? { year: String(side.year) } : {})
       })

@@ -10,76 +10,58 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "DSCF0792.webp",
-        "title": "DSCF0792"
+        "file": "DSCF0792.webp"
       },
       {
-        "file": "DSCF0827.webp",
-        "title": "DSCF0827"
+        "file": "DSCF0827.webp"
       },
       {
-        "file": "DSCF0860.webp",
-        "title": "DSCF0860"
+        "file": "DSCF0860.webp"
       },
       {
-        "file": "DSCF1034.webp",
-        "title": "DSCF1034"
+        "file": "DSCF1034.webp"
       },
       {
-        "file": "DSCF1117.webp",
-        "title": "DSCF1117"
+        "file": "DSCF1117.webp"
       },
       {
-        "file": "DSCF1126.webp",
-        "title": "DSCF1126"
+        "file": "DSCF1126.webp"
       },
       {
-        "file": "DSCF1136.webp",
-        "title": "DSCF1136"
+        "file": "DSCF1136.webp"
       },
       {
-        "file": "DSCF1144.webp",
-        "title": "DSCF1144"
+        "file": "DSCF1144.webp"
       },
       {
-        "file": "DSCF1324.webp",
-        "title": "DSCF1324"
+        "file": "DSCF1324.webp"
       },
       {
-        "file": "DSCF1409.webp",
-        "title": "DSCF1409"
+        "file": "DSCF1409.webp"
       },
       {
-        "file": "DSCF1611.webp",
-        "title": "DSCF1611"
+        "file": "DSCF1611.webp"
       },
       {
-        "file": "DSCF1673.webp",
-        "title": "DSCF1673"
+        "file": "DSCF1673.webp"
       },
       {
-        "file": "DSCF2000.webp",
-        "title": "DSCF2000"
+        "file": "DSCF2000.webp"
       },
       {
-        "file": "DSCF2043.webp",
-        "title": "DSCF2043"
+        "file": "DSCF2043.webp"
       },
       {
-        "file": "DSCF2307.webp",
-        "title": "DSCF2307"
+        "file": "DSCF2307.webp"
       },
       {
-        "file": "DSCF2377.webp",
-        "title": "DSCF2377"
+        "file": "DSCF2377.webp"
       },
       {
-        "file": "DSCF2495.webp",
-        "title": "DSCF2495"
+        "file": "DSCF2495.webp"
       },
       {
-        "file": "DSCF2662.webp",
-        "title": "DSCF2662"
+        "file": "DSCF2662.webp"
       }
     ]
   },
@@ -91,132 +73,100 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "0077_2026-08-19_1541.webp",
-        "title": "0077 2026 08 19 1541"
+        "file": "0077_2026-08-19_1541.webp"
       },
       {
-        "file": "0095_2026-08-19_1619.webp",
-        "title": "0095 2026 08 19 1619"
+        "file": "0095_2026-08-19_1619.webp"
       },
       {
-        "file": "0097_2026-08-19_1623.webp",
-        "title": "0097 2026 08 19 1623"
+        "file": "0097_2026-08-19_1623.webp"
       },
       {
-        "file": "0102_2026-08-19_1821.webp",
-        "title": "0102 2026 08 19 1821"
+        "file": "0102_2026-08-19_1821.webp"
       },
       {
-        "file": "0106_2026-08-20_1136.webp",
-        "title": "0106 2026 08 20 1136"
+        "file": "0106_2026-08-20_1136.webp"
       },
       {
-        "file": "0125_2026-08-20_1953.webp",
-        "title": "0125 2026 08 20 1953"
+        "file": "0125_2026-08-20_1953.webp"
       },
       {
-        "file": "0135_2026-08-21_1118.webp",
-        "title": "0135 2026 08 21 1118"
+        "file": "0135_2026-08-21_1118.webp"
       },
       {
-        "file": "0239_2026-08-23_1143.webp",
-        "title": "0239 2026 08 23 1143"
+        "file": "0239_2026-08-23_1143.webp"
       },
       {
-        "file": "0242_2026-08-23_1144.webp",
-        "title": "0242 2026 08 23 1144"
+        "file": "0242_2026-08-23_1144.webp"
       },
       {
-        "file": "0250_2026-08-23_1226.webp",
-        "title": "0250 2026 08 23 1226"
+        "file": "0250_2026-08-23_1226.webp"
       },
       {
-        "file": "0260_2026-08-23_1319.webp",
-        "title": "0260 2026 08 23 1319"
+        "file": "0260_2026-08-23_1319.webp"
       },
       {
-        "file": "0266_2026-08-23_1322.webp",
-        "title": "0266 2026 08 23 1322"
+        "file": "0266_2026-08-23_1322.webp"
       },
       {
-        "file": "0340_2026-08-24_1504.webp",
-        "title": "0340 2026 08 24 1504"
+        "file": "0340_2026-08-24_1504.webp"
       },
       {
-        "file": "0409_2026-08-25_0905.webp",
-        "title": "0409 2026 08 25 0905"
+        "file": "0409_2026-08-25_0905.webp"
       },
       {
-        "file": "0412_2026-08-25_0907.webp",
-        "title": "0412 2026 08 25 0907"
+        "file": "0412_2026-08-25_0907.webp"
       },
       {
-        "file": "0446_2026-08-25_0928.webp",
-        "title": "0446 2026 08 25 0928"
+        "file": "0446_2026-08-25_0928.webp"
       },
       {
-        "file": "0451_2026-08-25_0938.webp",
-        "title": "0451 2026 08 25 0938"
+        "file": "0451_2026-08-25_0938.webp"
       },
       {
-        "file": "0457_2026-08-25_1527.webp",
-        "title": "0457 2026 08 25 1527"
+        "file": "0457_2026-08-25_1527.webp"
       },
       {
-        "file": "0479_2026-08-25_1555.webp",
-        "title": "0479 2026 08 25 1555"
+        "file": "0479_2026-08-25_1555.webp"
       },
       {
-        "file": "0490_2026-08-25_1624.webp",
-        "title": "0490 2026 08 25 1624"
+        "file": "0490_2026-08-25_1624.webp"
       },
       {
-        "file": "0500_2026-08-25_1855.webp",
-        "title": "0500 2026 08 25 1855"
+        "file": "0500_2026-08-25_1855.webp"
       },
       {
-        "file": "0506_2026-08-26_0608.webp",
-        "title": "0506 2026 08 26 0608"
+        "file": "0506_2026-08-26_0608.webp"
       },
       {
-        "file": "0614_2026-08-27_0702.webp",
-        "title": "0614 2026 08 27 0702"
+        "file": "0614_2026-08-27_0702.webp"
       },
       {
-        "file": "0616_2026-08-27_0708.webp",
-        "title": "0616 2026 08 27 0708"
+        "file": "0616_2026-08-27_0708.webp"
       },
       {
-        "file": "0709_2026-08-29_1205.webp",
-        "title": "0709 2026 08 29 1205"
+        "file": "0709_2026-08-29_1205.webp"
       },
       {
-        "file": "0717_2026-08-29_1219.webp",
-        "title": "0717 2026 08 29 1219"
+        "file": "0717_2026-08-29_1219.webp"
       },
       {
-        "file": "0747_2026-08-29_1515.webp",
-        "title": "0747 2026 08 29 1515"
+        "file": "0747_2026-08-29_1515.webp"
       },
       {
-        "file": "0766_2026-08-29_1732.webp",
-        "title": "0766 2026 08 29 1732"
+        "file": "0766_2026-08-29_1732.webp"
       },
       {
-        "file": "0775_2026-08-29_1741.webp",
-        "title": "0775 2026 08 29 1741"
+        "file": "0775_2026-08-29_1741.webp"
       },
       {
-        "file": "0779_2026-08-29_1742.webp",
-        "title": "0779 2026 08 29 1742"
+        "file": "0779_2026-08-29_1742.webp"
       },
       {
-        "file": "0839_2026-08-30_1153.webp",
-        "title": "0839 2026 08 30 1153"
+        "file": "0839_2026-08-30_1153.webp"
       },
       {
-        "file": "0851_2026-08-30_1305.webp",
-        "title": "0851 2026 08 30 1305"
+        "file": "0851_2026-08-30_1305.webp"
       }
     ]
   },
@@ -228,40 +178,31 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "DSCF5417.webp",
-        "title": "DSCF5417"
+        "file": "DSCF5417.webp"
       },
       {
-        "file": "DSCF5446.webp",
-        "title": "DSCF5446"
+        "file": "DSCF5446.webp"
       },
       {
-        "file": "DSCF5478.webp",
-        "title": "DSCF5478"
+        "file": "DSCF5478.webp"
       },
       {
-        "file": "DSCF5589.webp",
-        "title": "DSCF5589"
+        "file": "DSCF5589.webp"
       },
       {
-        "file": "DSCF5642.webp",
-        "title": "DSCF5642"
+        "file": "DSCF5642.webp"
       },
       {
-        "file": "DSCF6163.webp",
-        "title": "DSCF6163"
+        "file": "DSCF6163.webp"
       },
       {
-        "file": "DSCF6186.webp",
-        "title": "DSCF6186"
+        "file": "DSCF6186.webp"
       },
       {
-        "file": "DSCF6193.webp",
-        "title": "DSCF6193"
+        "file": "DSCF6193.webp"
       },
       {
-        "file": "DSCF6197.webp",
-        "title": "DSCF6197"
+        "file": "DSCF6197.webp"
       }
     ]
   },
@@ -273,32 +214,25 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "IMG_7085.webp",
-        "title": "IMG 7085"
+        "file": "IMG_7085.webp"
       },
       {
-        "file": "IMG_7086.webp",
-        "title": "IMG 7086"
+        "file": "IMG_7086.webp"
       },
       {
-        "file": "IMG_7087.webp",
-        "title": "IMG 7087"
+        "file": "IMG_7087.webp"
       },
       {
-        "file": "IMG_7088.webp",
-        "title": "IMG 7088"
+        "file": "IMG_7088.webp"
       },
       {
-        "file": "IMG_7089.webp",
-        "title": "IMG 7089"
+        "file": "IMG_7089.webp"
       },
       {
-        "file": "IMG_7090.webp",
-        "title": "IMG 7090"
+        "file": "IMG_7090.webp"
       },
       {
-        "file": "IMG_7131.webp",
-        "title": "IMG 7131"
+        "file": "IMG_7131.webp"
       }
     ]
   }
