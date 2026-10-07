@@ -22,9 +22,9 @@ function isStale(src, out) {
   return !fs.existsSync(out) || fs.statSync(out).mtimeMs < fs.statSync(src).mtimeMs
 }
 
-// Gallery thumbs: wide enough for retina tiles (~2× a ~640px column) and sharper encode.
-const THUMB_WIDTH = 1280
-const THUMB_QUALITY = 86
+// Gallery thumbs: large enough for retina tiles; pages also expose fulls via srcset.
+const THUMB_WIDTH = 1920
+const THUMB_QUALITY = 90
 
 async function thumbs(fullDir, thumbDir, width = THUMB_WIDTH) {
   if (!fs.existsSync(fullDir)) return

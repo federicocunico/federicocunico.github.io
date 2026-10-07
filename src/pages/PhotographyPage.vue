@@ -2,7 +2,8 @@
 import { ref, computed } from 'vue'
 import { useLang } from '../composables/useLang'
 import { PHOTOGRAPHY } from '../siteContent'
-import { photoFull, photoThumb } from '../lib/media'
+import { photoFull, photoThumb, photoSrcset } from '../lib/media'
+import { markLandscape } from '../lib/galleryImg'
 import PageHead from '../components/PageHead.vue'
 import LightboxViewer from '../components/LightboxViewer.vue'
 
@@ -40,6 +41,13 @@ const slides = computed(() =>
 )
 
 const titleOf = (s) => (typeof s.title === 'object' ? s.title[lang.value] : s.title)
+
+function sizesFor(i) {
+  const k = span(i)
+  if (k === 'wide') return '(max-width: 720px) 100vw, 58vw'
+  if (k === 'tall') return '(max-width: 720px) 50vw, 42vw'
+  return '(max-width: 720px) 50vw, 33vw'
+}
 </script>
 
 <template>
@@ -57,7 +65,17 @@ const titleOf = (s) => (typeof s.title === 'object' ? s.title[lang.value] : s.ti
 
     <div v-if="visible.length" class="grid">
       <button v-for="(p, i) in visible" :key="p.series + p.file" class="item" :class="span(i)" @click="open = i">
-        <span class="thumb"><img :src="photoThumb(p.series, p.file)" :alt="p.title || ''" loading="lazy" decoding="async" /></span>
+        <span class="thumb">
+          <img
+            :src="photoThumb(p.series, p.file)"
+            :srcset="photoSrcset(p.series, p.file)"
+            :sizes="sizesFor(i)"
+            :alt="p.title || ''"
+            loading="lazy"
+            decoding="async"
+            @load="markLandscape"
+          />
+        </span>
         <span v-if="p.title || p.place" class="caption">
           <span class="cap-title">{{ p.title }}</span>
           <span class="mono">{{ [p.place, p.year].filter(Boolean).join(' · ') }}</span>
@@ -88,8 +106,21 @@ const titleOf = (s) => (typeof s.title === 'object' ? s.title[lang.value] : s.ti
 .thumb { display: block; overflow: hidden; background: var(--surface); }
 .wide .thumb { aspect-ratio: 3 / 2; }
 .tall .thumb, .third .thumb { aspect-ratio: 4 / 5; }
-.thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
 .item:hover img { transform: scale(1.03); }
+/* Landscape photos in portrait tiles: slow R→L pan so the crop is obvious. */
+.tall .thumb img.is-landscape,
+.third .thumb img.is-landscape {
+  animation: pan-x 18s ease-in-out infinite alternate;
+}
+@keyframes pan-x {
+  from { object-position: 100% 50%; }
+  to { object-position: 0% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tall .thumb img.is-landscape,
+  .third .thumb img.is-landscape { animation: none; }
+}
 .caption { display: flex; justify-content: space-between; gap: 8px; }
 .cap-title { font-size: 17px; font-weight: 500; }
 

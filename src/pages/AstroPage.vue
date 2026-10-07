@@ -2,7 +2,8 @@
 import { ref, computed } from 'vue'
 import { useLang } from '../composables/useLang'
 import { ASTRO } from '../siteContent'
-import { astroFull, astroThumb } from '../lib/media'
+import { astroFull, astroThumb, astroSrcset } from '../lib/media'
+import { markLandscape } from '../lib/galleryImg'
 import PageHead from '../components/PageHead.vue'
 import LightboxViewer from '../components/LightboxViewer.vue'
 import AppIcon from '../components/AppIcon.vue'
@@ -74,7 +75,7 @@ function metaLine(a) {
 
   <section v-if="latest" class="feature grid12 rise-3">
     <button class="feature-img tile" @click="openLatest">
-      <img :src="astroFull(latest.file)" :alt="latest.title" fetchpriority="high" />
+      <img :src="astroFull(latest.file)" :alt="latest.title" fetchpriority="high" @load="markLandscape" />
       <span class="badge">{{ t.astroLatest }}</span>
     </button>
     <div class="feature-info">
@@ -103,7 +104,17 @@ function metaLine(a) {
 
     <div class="grid">
       <button v-for="(a, i) in visible" :key="a.file" class="tile item" @click="open = i">
-        <span class="thumb"><img :src="astroThumb(a.file)" :alt="a.title" loading="lazy" decoding="async" /></span>
+        <span class="thumb">
+          <img
+            :src="astroThumb(a.file)"
+            :srcset="astroSrcset(a.file)"
+            sizes="(max-width: 720px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            :alt="a.title"
+            loading="lazy"
+            decoding="async"
+            @load="markLandscape"
+          />
+        </span>
         <span class="caption"><span class="cap-title">{{ a.title }}</span><span v-if="a.catalog" class="mono">{{ a.catalog }}</span></span>
         <span v-if="metaLine(a)" class="mono meta">{{ metaLine(a) }}</span>
       </button>
@@ -116,7 +127,8 @@ function metaLine(a) {
 <style scoped>
 .feature { padding-bottom: 72px; }
 .feature-img { grid-column: 1 / span 8; height: 560px; position: relative; overflow: hidden; background: #0B0B0C; cursor: zoom-in; }
-.feature-img img { width: 100%; height: 100%; object-fit: cover; }
+.feature-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.feature-img img.is-landscape { animation: pan-x 22s ease-in-out infinite alternate; }
 .badge { position: absolute; left: 16px; top: 16px; font-family: var(--mono); font-size: 12px; color: #FFFFFF; background: rgba(0, 0, 0, .45); padding: 4px 8px; }
 .feature-info { grid-column: 9 / span 4; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
 .stack { display: flex; flex-direction: column; gap: 8px; }
@@ -137,7 +149,16 @@ function metaLine(a) {
 .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
 .item { display: flex; flex-direction: column; gap: 10px; cursor: zoom-in; }
 .thumb { display: block; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: #0B0B0C; }
-.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.thumb img.is-landscape { animation: pan-x 18s ease-in-out infinite alternate; }
+@keyframes pan-x {
+  from { object-position: 100% 50%; }
+  to { object-position: 0% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .thumb img.is-landscape,
+  .feature-img img.is-landscape { animation: none; }
+}
 .caption { display: flex; justify-content: space-between; gap: 8px; }
 .cap-title { font-size: 17px; font-weight: 500; }
 .meta { margin-top: -6px; }

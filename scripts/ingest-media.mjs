@@ -15,8 +15,8 @@ const pub = path.join(root, 'public')
 const catalogPath = path.join(root, 'src', 'generated', 'mediaCatalog.js')
 
 const IMAGE = /\.(jpe?g|png|webp|tiff?|heic|heif)$/i
-const MAX_EDGE = 2800
-const WEBP_QUALITY = 82
+const MAX_EDGE = 4000
+const WEBP_QUALITY = 88
 const WATERMARK = 'F.Cunico'
 
 let made = 0
@@ -74,28 +74,36 @@ function titleFromStem(stem) {
 }
 
 async function watermarkedWebp(src, out) {
-  const base = sharp(src).rotate()
-  const meta = await base.metadata()
+  // Resize first, then composite a small watermark (avoids SVG/canvas size mismatches).
+  let pipeline = sharp(src).rotate()
+  const meta = await pipeline.metadata()
   const width = meta.width || MAX_EDGE
   const height = meta.height || MAX_EDGE
   const long = Math.max(width, height)
-  const scale = long > MAX_EDGE ? MAX_EDGE / long : 1
-  const outW = Math.round(width * scale)
-  const outH = Math.round(height * scale)
-  const fontSize = Math.max(18, Math.round(Math.min(outW, outH) * 0.028))
-  const margin = Math.round(fontSize * 1.2)
+  if (long > MAX_EDGE) {
+    pipeline = sharp(src).rotate().resize({
+      width: MAX_EDGE,
+      height: MAX_EDGE,
+      fit: 'inside',
+      withoutEnlargement: true
+    })
+  }
+  const { data, info } = await pipeline.toBuffer({ resolveWithObject: true })
+  const fontSize = Math.max(18, Math.round(Math.min(info.width, info.height) * 0.028))
+  const padX = Math.round(fontSize * 1.4)
+  const padY = Math.round(fontSize * 0.85)
+  const textW = Math.ceil(fontSize * WATERMARK.length * 0.62) + padX * 2
+  const textH = Math.ceil(fontSize * 1.6) + padY
   const svg = Buffer.from(
-    `<svg width="${outW}" height="${outH}" xmlns="http://www.w3.org/2000/svg">` +
-      `<text x="${outW - margin}" y="${outH - margin}" text-anchor="end" ` +
+    `<svg width="${textW}" height="${textH}" xmlns="http://www.w3.org/2000/svg">` +
+      `<text x="${textW - padX}" y="${textH - padY}" text-anchor="end" ` +
       `font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="${fontSize}" ` +
       `fill="#ffffff" fill-opacity="0.42">${WATERMARK}</text>` +
       `</svg>`
   )
 
   fs.mkdirSync(path.dirname(out), { recursive: true })
-  let pipeline = sharp(src).rotate()
-  if (scale < 1) pipeline = pipeline.resize({ width: outW, height: outH, fit: 'inside', withoutEnlargement: true })
-  await pipeline.composite([{ input: svg, top: 0, left: 0 }]).webp({ quality: WEBP_QUALITY }).toFile(out)
+  await sharp(data).composite([{ input: svg, gravity: 'southeast' }]).webp({ quality: WEBP_QUALITY }).toFile(out)
 }
 
 function listImageFiles(dir) {
