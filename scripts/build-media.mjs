@@ -1,10 +1,11 @@
 // Generates lightweight derivatives of the media in public/ so pages load
 // small files first and fetch originals only on demand.
 //
-//   public/astro/full/*.jpg              -> public/astro/thumbs/*.webp
-//   public/photography/<series>/full/*   -> public/photography/<series>/thumbs/*.webp
-//   assets-src/portrait.jpg              -> public/profile/portrait-{640,1280}.webp
+//   public/astro/full/*.(webp|jpg|…)           -> public/astro/thumbs/*.webp
+//   public/photography/<series>/full/*         -> public/photography/<series>/thumbs/*.webp
+//   assets-src/portrait.jpg                    -> public/profile/portrait-{640,1280}.webp
 //
+// Thumbs are never watermarked (watermark lives only on ingest fulls).
 // Files are regenerated only when the source is newer than the output.
 import fs from 'node:fs'
 import path from 'node:path'

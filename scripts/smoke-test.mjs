@@ -1,6 +1,6 @@
 // Smoke test for the production build: serves dist/ and checks that every
-// page, every media file referenced in siteContent.js and the generated
-// files respond, and that the IT and EN texts have the same keys.
+// page, every media file referenced in the media catalog / siteContent and the
+// generated files respond, and that the IT and EN texts have the same keys.
 // Run after `npm run build` (make test does both).
 import fs from 'node:fs'
 import path from 'node:path'

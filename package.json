@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run media && vite",
+    "ingest": "node scripts/ingest-media.mjs",
     "media": "node scripts/build-media.mjs",
     "generate:cv": "node scripts/generate-cv.mjs",
     "build": "npm run media && npm run generate:cv && vite build",

@@ -13,35 +13,57 @@ const filter = ref('all')
 const open = ref(-1)
 
 const totalHours = ASTRO.reduce((sum, a) => sum + (a.integration || 0), 0)
-const latest = [...ASTRO].sort((a, b) => b.date.localeCompare(a.date))[0]
+const latest = [...ASTRO]
+  .filter((a) => a.date)
+  .sort((a, b) => b.date.localeCompare(a.date))[0] || ASTRO[0]
 
-const groups = ['all', 'nebula', 'cluster', 'galaxy']
-const filters = computed(() =>
-  groups
-    .map((key) => ({ key, label: t.value.filters[key], n: key === 'all' ? ASTRO.length : ASTRO.filter((a) => a.group === key).length }))
+const groupKeys = [...new Set(ASTRO.map((a) => a.group).filter(Boolean))].sort()
+const filters = computed(() => {
+  const all = { key: 'all', label: t.value.filters.all, n: ASTRO.length }
+  const rest = groupKeys
+    .map((key) => ({
+      key,
+      label: t.value.filters[key] || key.replace(/-/g, ' '),
+      n: ASTRO.filter((a) => a.group === key).length
+    }))
     .filter((f) => f.n > 0)
-)
+  return [all, ...rest].filter((f) => f.n > 0)
+})
 
 const visible = computed(() => (filter.value === 'all' ? ASTRO : ASTRO.filter((a) => a.group === filter.value)))
+
+function typeLabel(type) {
+  if (!type) return ''
+  return t.value.types[type] || type
+}
+
+function detailRows(a) {
+  return [
+    a.type && [t.value.field.type, typeLabel(a.type)],
+    a.date && [t.value.field.date, a.date],
+    a.integration != null && [t.value.field.integration, `${a.integration} h`],
+    a.equipment && [t.value.field.equipment, a.equipment]
+  ].filter(Boolean)
+}
 
 const slides = computed(() =>
   visible.value.map((a) => ({
     thumb: astroThumb(a.file),
     full: astroFull(a.file),
     title: a.title,
-    kicker: a.catalog,
-    rows: [
-      [t.value.field.type, t.value.types[a.type]],
-      [t.value.field.date, a.date],
-      [t.value.field.integration, `${a.integration} h`],
-      [t.value.field.equipment, a.equipment]
-    ]
+    kicker: a.catalog || '',
+    rows: detailRows(a)
   }))
 )
 
 function openLatest() {
   filter.value = 'all'
   open.value = ASTRO.indexOf(latest)
+}
+
+function metaLine(a) {
+  const bits = [a.date, a.integration != null ? `${a.integration} h` : null, a.equipment && a.equipment.split(' · ')[0]]
+  return bits.filter(Boolean).join(' · ')
 }
 </script>
 
@@ -57,20 +79,19 @@ function openLatest() {
     </button>
     <div class="feature-info">
       <div class="stack">
-        <span class="mono">{{ latest.catalog }}</span>
+        <span v-if="latest.catalog" class="mono">{{ latest.catalog }}</span>
         <h2 class="feature-title">{{ latest.title }}</h2>
       </div>
-      <dl class="data">
-        <dt class="mono">{{ t.field.type }}</dt><dd>{{ t.types[latest.type] }}</dd>
-        <dt class="mono">{{ t.field.date }}</dt><dd>{{ latest.date }}</dd>
-        <dt class="mono">{{ t.field.integration }}</dt><dd>{{ latest.integration }} h</dd>
-        <dt class="mono">{{ t.field.equipment }}</dt><dd>{{ latest.equipment }}</dd>
+      <dl v-if="detailRows(latest).length" class="data">
+        <template v-for="([label, value], i) in detailRows(latest)" :key="i">
+          <dt class="mono">{{ label }}</dt><dd>{{ value }}</dd>
+        </template>
       </dl>
       <button class="btn btn-solid open" @click="openLatest">{{ t.astroOpen }} <AppIcon name="expand" /></button>
     </div>
   </section>
 
-  <section class="gallery">
+  <section v-if="ASTRO.length" class="gallery">
     <div class="toolbar">
       <div class="chips">
         <button v-for="f in filters" :key="f.key" class="chip" :aria-pressed="filter === f.key" @click="filter = f.key">
@@ -83,8 +104,8 @@ function openLatest() {
     <div class="grid">
       <button v-for="(a, i) in visible" :key="a.file" class="tile item" @click="open = i">
         <span class="thumb"><img :src="astroThumb(a.file)" :alt="a.title" loading="lazy" decoding="async" /></span>
-        <span class="caption"><span class="cap-title">{{ a.title }}</span><span class="mono">{{ a.catalog }}</span></span>
-        <span class="mono meta">{{ a.date }} · {{ a.integration }} h · {{ a.equipment.split(' · ')[0] }}</span>
+        <span class="caption"><span class="cap-title">{{ a.title }}</span><span v-if="a.catalog" class="mono">{{ a.catalog }}</span></span>
+        <span v-if="metaLine(a)" class="mono meta">{{ metaLine(a) }}</span>
       </button>
     </div>
   </section>

@@ -3,7 +3,7 @@
 
 PORT ?= 4173
 
-.PHONY: help install dev build serve serve-build preview test media cv clean
+.PHONY: help install dev build serve serve-build preview test ingest media cv clean
 
 help:
 	@echo make install  - install dependencies
@@ -13,6 +13,7 @@ help:
 	@echo make serve-build - build, then serve dist/ like GitHub Pages, http://localhost:$(PORT)
 	@echo make preview  - serve the existing dist/ without rebuilding
 	@echo make test     - build, then check pages, media, CV and IT/EN texts
+	@echo make ingest   - encode ingest/ images to watermarked WebP + media catalog
 	@echo make media    - regenerate thumbnails and portrait
 	@echo make cv       - regenerate the CV PDFs
 	@echo make clean    - remove dist/
@@ -36,6 +37,9 @@ preview:
 
 test: build
 	node scripts/smoke-test.mjs
+
+ingest:
+	npm run ingest
 
 media:
 	npm run media

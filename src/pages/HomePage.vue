@@ -7,10 +7,12 @@ import AppIcon from '../components/AppIcon.vue'
 
 const { t } = useLang()
 
-const astroPreview = ['NGC2024-FlameNebula.jpg', 'M1-Crab.jpg', 'RosettaNebula.jpg']
-  .map((f) => ASTRO.find((a) => a.file === f))
-  .filter(Boolean)
-  .map((a) => ({ src: astroThumb(a.file), alt: a.title }))
+const preferredAstro = ['NGC2024-FlameNebula.webp', 'M1-Crab.webp', 'RosettaNebula.webp']
+const picked = preferredAstro.map((f) => ASTRO.find((a) => a.file === f)).filter(Boolean)
+const astroPreview = (picked.length ? picked : ASTRO.slice(0, 3)).map((a) => ({
+  src: astroThumb(a.file),
+  alt: a.title
+}))
 
 const photoPreview = computed(() => {
   const series = PHOTOGRAPHY.find((s) => s.items && s.items.length)
