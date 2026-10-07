@@ -13,7 +13,7 @@ const { isDark, toggleTheme } = useTheme()
     <div class="wrap bar">
       <RouterLink to="/" class="brand">
         <span class="square" />
-        <span>Federico Cunico</span>
+        <span>Federico Cunico, PhD</span>
       </RouterLink>
 
       <!-- Always visible: one row on desktop, a second row of tabs on small screens -->

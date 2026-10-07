@@ -27,7 +27,7 @@ const album = MUSIC[0]
     <div class="kicker mono rule-top rise"><span>{{ t.homeKicker }} — {{ new Date().getFullYear() }}</span><span>Verona, IT<span class="coords"> · 45.44° N 10.99° E</span></span></div>
 
     <div class="intro">
-      <h1 class="name rise-2">Federico<br />Cunico</h1><br /><h2 class="name rise-2">PhD</h2>
+      <h1 class="name rise-2">Federico<br />Cunico, PhD</h1>
       <p class="statement rise-3">{{ t.homeIntro }}</p>
       <div class="facts rise-3">
         <div class="fact"><span class="mono">{{ t.homeRoleLabel }}</span><span>{{ t.homeRole }}</span></div>
