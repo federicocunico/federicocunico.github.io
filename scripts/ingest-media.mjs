@@ -14,6 +14,7 @@ const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ingestRoot = path.join(root, 'ingest')
 const pub = path.join(root, 'public')
 const catalogPath = path.join(root, 'src', 'generated', 'mediaCatalog.js')
+const photoExifPath = path.join(root, 'src', 'generated', 'photoExif.json')
 
 const IMAGE = /\.(jpe?g|png|webp|tiff?|heic|heif)$/i
 const MAX_EDGE = 4000
@@ -62,6 +63,9 @@ function readJson(file) {
   }
 }
 
+/** Persistent EXIF/place store — merged across ingests, never wiped by re-runs. */
+const photoExifStore = readJson(photoExifPath) || {}
+
 /** Sidecar: Name.jpg.json or Name.json next to the image. */
 function loadSidecar(dir, name) {
   const stem = stemOf(name)
@@ -83,17 +87,92 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms))
 }
 
-async function readGps(src) {
+function formatExposure(t) {
+  if (t == null || !Number.isFinite(Number(t))) return null
+  const n = Number(t)
+  if (n >= 1) return `${Number(n.toFixed(1))} s`
+  const den = Math.max(1, Math.round(1 / n))
+  return `1/${den} s`
+}
+
+function formatDate(d) {
+  if (!d) return null
+  const dt = d instanceof Date ? d : new Date(d)
+  if (Number.isNaN(dt.getTime())) return null
+  return dt.toISOString().slice(0, 10)
+}
+
+function formatFocal(mm) {
+  if (mm == null || !Number.isFinite(Number(mm))) return null
+  return `${Number(Number(mm).toFixed(1))} mm`
+}
+
+function formatAperture(f) {
+  if (f == null || !Number.isFinite(Number(f))) return null
+  return `f/${Number(Number(f).toFixed(1))}`
+}
+
+/** Keep existing values; fill/overwrite only when incoming has a non-empty value. */
+function mergeMeta(prev, incoming) {
+  const out = { ...(prev || {}) }
+  for (const [k, v] of Object.entries(incoming || {})) {
+    if (v == null || v === '') continue
+    out[k] = v
+  }
+  return out
+}
+
+async function extractExif(src) {
+  const out = {}
+  try {
+    const raw = await exifr.parse(src, {
+      pick: [
+        'Make',
+        'Model',
+        'LensModel',
+        'FocalLength',
+        'FocalLengthIn35mmFormat',
+        'FNumber',
+        'ExposureTime',
+        'ISO',
+        'DateTimeOriginal',
+        'CreateDate'
+      ]
+    })
+    if (raw) {
+      const make = raw.Make ? String(raw.Make).trim() : ''
+      const model = raw.Model ? String(raw.Model).trim() : ''
+      const camera = [make, model].filter(Boolean).join(' ')
+      if (camera) out.camera = camera
+      if (raw.LensModel) out.lens = String(raw.LensModel).trim()
+      const focal = formatFocal(raw.FocalLengthIn35mmFormat || raw.FocalLength)
+      if (focal) out.focalLength = focal
+      const aperture = formatAperture(raw.FNumber)
+      if (aperture) out.aperture = aperture
+      const exposure = formatExposure(raw.ExposureTime)
+      if (exposure) out.exposure = exposure
+      if (raw.ISO != null) out.iso = String(raw.ISO)
+      const date = formatDate(raw.DateTimeOriginal || raw.CreateDate)
+      if (date) out.date = date
+      if (date) out.year = date.slice(0, 4)
+    }
+  } catch {
+    /* ignore parse errors */
+  }
   try {
     const gps = await exifr.gps(src)
-    if (!gps || gps.latitude == null || gps.longitude == null) return null
-    const lat = Number(gps.latitude)
-    const lon = Number(gps.longitude)
-    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null
-    return { lat, lon }
+    if (gps && gps.latitude != null && gps.longitude != null) {
+      const lat = Number(gps.latitude)
+      const lon = Number(gps.longitude)
+      if (Number.isFinite(lat) && Number.isFinite(lon)) {
+        out.lat = Math.round(lat * 1e6) / 1e6
+        out.lon = Math.round(lon * 1e6) / 1e6
+      }
+    }
   } catch {
-    return null
+    /* no GPS */
   }
+  return out
 }
 
 async function reverseGeocode(lat, lon) {
@@ -223,37 +302,44 @@ function seriesPlaceFallback(title) {
   return title.it || title.en || null
 }
 
-async function buildPhotoMeta(src, side, seriesFallbackPlace) {
+async function buildPhotoMeta(metaKey, src, side, seriesFallbackPlace) {
+  const prev = photoExifStore[metaKey] || {}
   const orientation = (await orientationOf(src)) || undefined
-  let lat = side.lat != null ? Number(side.lat) : null
-  let lon = side.lon != null ? Number(side.lon) : null
-  let place = side.place || null
+  const extracted = await extractExif(src)
 
-  if (lat == null || lon == null || !Number.isFinite(lat) || !Number.isFinite(lon)) {
-    const gps = await readGps(src)
-    if (gps) {
-      lat = gps.lat
-      lon = gps.lon
-    } else {
-      lat = null
-      lon = null
+  const sidecarPatch = {}
+  if (side.title) sidecarPatch.title = side.title
+  if (side.place) sidecarPatch.place = side.place
+  if (side.year) sidecarPatch.year = String(side.year)
+  if (side.date) sidecarPatch.date = String(side.date)
+  if (side.camera) sidecarPatch.camera = side.camera
+  if (side.lens) sidecarPatch.lens = side.lens
+  if (side.focalLength) sidecarPatch.focalLength = side.focalLength
+  if (side.aperture) sidecarPatch.aperture = side.aperture
+  if (side.exposure) sidecarPatch.exposure = side.exposure
+  if (side.iso != null) sidecarPatch.iso = String(side.iso)
+  if (side.lat != null && Number.isFinite(Number(side.lat))) sidecarPatch.lat = Number(side.lat)
+  if (side.lon != null && Number.isFinite(Number(side.lon))) sidecarPatch.lon = Number(side.lon)
+
+  let merged = mergeMeta(prev, extracted)
+  if (orientation) merged = mergeMeta(merged, { orientation })
+  merged = mergeMeta(merged, sidecarPatch)
+
+  let lat = merged.lat != null ? Number(merged.lat) : null
+  let lon = merged.lon != null ? Number(merged.lon) : null
+  if (lat != null && lon != null && Number.isFinite(lat) && Number.isFinite(lon)) {
+    merged.lat = Math.round(lat * 1e6) / 1e6
+    merged.lon = Math.round(lon * 1e6) / 1e6
+    if (!merged.place || merged.place === seriesFallbackPlace) {
+      const geo = await reverseGeocode(merged.lat, merged.lon)
+      if (geo) merged.place = geo
     }
   }
+  if (!merged.place && seriesFallbackPlace) merged.place = seriesFallbackPlace
 
-  if (!place && lat != null && lon != null && Number.isFinite(lat) && Number.isFinite(lon)) {
-    place = await reverseGeocode(lat, lon)
-  }
-  if (!place) place = seriesFallbackPlace || null
-
-  const meta = {
-    ...(orientation ? { orientation } : {}),
-    ...(place ? { place } : {})
-  }
-  if (lat != null && lon != null && Number.isFinite(lat) && Number.isFinite(lon)) {
-    meta.lat = Math.round(lat * 1e6) / 1e6
-    meta.lon = Math.round(lon * 1e6) / 1e6
-  }
-  return meta
+  // Persist merged record (never drop previous keys).
+  photoExifStore[metaKey] = mergeMeta(prev, merged)
+  return photoExifStore[metaKey]
 }
 
 async function ingestPhotography() {
@@ -282,13 +368,27 @@ async function ingestPhotography() {
       const ok = await processOne(src, out)
       if (!ok && !fs.existsSync(out)) continue
       const side = loadSidecar(dir, name)
-      const geo = await buildPhotoMeta(src, side, fallbackPlace)
-      items.push({
-        file: outName,
-        ...(side.title ? { title: side.title } : {}),
-        ...geo,
-        ...(side.year ? { year: String(side.year) } : {})
-      })
+      const metaKey = `${seriesId}/${stemOf(name)}`
+      const meta = await buildPhotoMeta(metaKey, src, side, fallbackPlace)
+      const item = { file: outName }
+      for (const k of [
+        'title',
+        'orientation',
+        'place',
+        'lat',
+        'lon',
+        'date',
+        'year',
+        'camera',
+        'lens',
+        'focalLength',
+        'aperture',
+        'exposure',
+        'iso'
+      ]) {
+        if (meta[k] != null && meta[k] !== '') item[k] = meta[k]
+      }
+      items.push(item)
     }
     if (items.length) seriesList.push({ id: seriesId, title, items })
   }
@@ -353,14 +453,22 @@ function writeCatalog(photography, astro) {
   fs.writeFileSync(catalogPath, body)
 }
 
+function writePhotoExifStore() {
+  fs.mkdirSync(path.dirname(photoExifPath), { recursive: true })
+  const sorted = Object.fromEntries(Object.entries(photoExifStore).sort(([a], [b]) => a.localeCompare(b)))
+  fs.writeFileSync(photoExifPath, `${JSON.stringify(sorted, null, 2)}\n`)
+}
+
 const photography = await ingestPhotography()
 const astro = await ingestAstro()
 writeCatalog(photography, astro)
+writePhotoExifStore()
 
 const parts = [`catalog: ${photography.length} photo series, ${astro.length} astro`]
 if (made) parts.unshift(`wrote ${made}`)
 if (skipped) parts.push(`${skipped} up to date`)
 if (failed) parts.push(`${failed} failed/skipped`)
 if (placeCache.size) parts.push(`${placeCache.size} geocode lookup(s)`)
+parts.push(`exif store ${Object.keys(photoExifStore).length} entries`)
 console.log(`ingest: ${parts.join(', ')}`)
 if (failed && !made && !skipped && photography.length === 0 && astro.length === 0) process.exitCode = 1

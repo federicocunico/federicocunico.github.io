@@ -30,19 +30,28 @@ const meta = computed(() =>
 )
 
 const slides = computed(() =>
-  visible.value.map((p) => ({
-    thumb: photoThumb(p.series, p.file),
-    full: photoFull(p.series, p.file),
-    title: p.title || '',
-    kicker: [p.place, p.year].filter(Boolean).join(' · '),
-    place: p.place || '',
-    mapUrl: osmLink(p.lat, p.lon),
-    mapEmbed: osmEmbed(p.lat, p.lon),
-    rows: [
-      p.place && [t.value.field.place, p.place],
-      p.year && [t.value.field.year, p.year]
+  visible.value.map((p) => {
+    const rows = [
+      p.date && [t.value.field.date, p.date],
+      !p.date && p.year && [t.value.field.year, p.year],
+      p.camera && [t.value.field.camera, p.camera],
+      p.lens && [t.value.field.lens, p.lens],
+      p.focalLength && [t.value.field.focalLength, p.focalLength],
+      p.aperture && [t.value.field.aperture, p.aperture],
+      p.exposure && [t.value.field.exposure, p.exposure],
+      p.iso && [t.value.field.iso, p.iso]
     ].filter(Boolean)
-  }))
+    return {
+      thumb: photoThumb(p.series, p.file),
+      full: photoFull(p.series, p.file),
+      title: p.title || '',
+      kicker: '',
+      place: p.place || '',
+      mapUrl: osmLink(p.lat, p.lon),
+      mapEmbed: osmEmbed(p.lat, p.lon),
+      rows
+    }
+  })
 )
 
 const titleOf = (s) => (typeof s.title === 'object' ? s.title[lang.value] : s.title)

@@ -55,7 +55,9 @@ Example (astro):
 
 Photography fields: `title`, `place`, `year`, `lat`, `lon`.
 
-Without a sidecar, ingest reads EXIF GPS (when present), reverse-geocodes via OpenStreetMap Nominatim at ingest time, and falls back to the series name for `place` if there are no coordinates.
+Without a sidecar, ingest reads EXIF (camera, lens, exposure, date, GPS when present), reverse-geocodes via OpenStreetMap Nominatim at ingest time, and falls back to the series name for `place` if there are no coordinates.
+
+Extracted metadata is merged into committed `src/generated/photoExif.json` and **never wiped** by later `make ingest` runs (new EXIF/sidecar values only fill or update fields).
 
 Per series, optional `series.json` in the series folder:
 

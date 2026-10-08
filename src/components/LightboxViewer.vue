@@ -59,32 +59,23 @@ onBeforeUnmount(() => {
             <span class="mono">{{ num }} / {{ count }}</span>
             <button class="icon-btn" :aria-label="t.close" @click="close"><AppIcon name="close" :size="20" /></button>
           </div>
-          <div class="titles">
+          <div v-if="item.title" class="titles">
             <span v-if="item.kicker" class="mono">{{ item.kicker }}</span>
-            <h2 v-if="item.title" class="title">{{ item.title }}</h2>
+            <h2 class="title">{{ item.title }}</h2>
           </div>
-          <dl v-if="item.rows && item.rows.length" class="sheet">
-            <template v-for="[label, value] in item.rows" :key="label">
-              <dt>{{ label }}</dt>
-              <dd>{{ value }}</dd>
-            </template>
-          </dl>
 
           <div v-if="item.place || item.mapUrl || item.mapEmbed" class="place-block">
-            <div class="place-head">
-              <span class="mono">{{ t.field.place }}</span>
-              <a
-                v-if="item.mapUrl"
-                class="map-link"
-                :href="item.mapUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <AppIcon name="pin" :size="16" />
-                <span>{{ item.place || t.openMap }}</span>
-              </a>
-              <span v-else-if="item.place" class="place-only">{{ item.place }}</span>
-            </div>
+            <a
+              v-if="item.mapUrl"
+              class="map-link"
+              :href="item.mapUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AppIcon name="pin" :size="16" />
+              <span>{{ item.place || t.openMap }}</span>
+            </a>
+            <span v-else-if="item.place" class="place-only">{{ item.place }}</span>
             <iframe
               v-if="item.mapEmbed"
               class="map-embed"
@@ -94,6 +85,13 @@ onBeforeUnmount(() => {
               :title="item.place || t.openMap"
             />
           </div>
+
+          <dl v-if="item.rows && item.rows.length" class="sheet">
+            <template v-for="[label, value] in item.rows" :key="label">
+              <dt>{{ label }}</dt>
+              <dd>{{ value }}</dd>
+            </template>
+          </dl>
         </div>
         <div v-if="items.length > 1" class="pager">
           <button class="btn step" @click="go(-1)"><AppIcon name="left" /><span>{{ t.prev }}</span></button>
@@ -144,7 +142,6 @@ onBeforeUnmount(() => {
 .sheet dt { color: #8A8C92; }
 
 .place-block { display: flex; flex-direction: column; gap: 12px; }
-.place-head { display: flex; flex-direction: column; gap: 8px; }
 .map-link {
   display: inline-flex;
   align-items: center;

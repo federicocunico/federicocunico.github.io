@@ -12,37 +12,93 @@ export const PHOTOGRAPHY = [
       {
         "file": "DSCF0792.webp",
         "orientation": "portrait",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-17",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-80mmF4 R OIS WR",
+        "focalLength": "56 mm",
+        "aperture": "f/4.5",
+        "exposure": "1/75 s",
+        "iso": "250"
       },
       {
         "file": "DSCF0827.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-17",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-80mmF4 R OIS WR",
+        "focalLength": "120 mm",
+        "aperture": "f/4",
+        "exposure": "1/150 s",
+        "iso": "250"
       },
       {
         "file": "DSCF0860.webp",
         "orientation": "portrait",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-17",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-80mmF4 R OIS WR",
+        "focalLength": "105 mm",
+        "aperture": "f/22",
+        "exposure": "1/80 s",
+        "iso": "3200"
       },
       {
         "file": "DSCF1034.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-18",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/1.2",
+        "exposure": "1/8000 s",
+        "iso": "250"
       },
       {
         "file": "DSCF1117.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-19",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/1.2",
+        "exposure": "1/180 s",
+        "iso": "250"
       },
       {
         "file": "DSCF1126.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-19",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/5.6",
+        "exposure": "1/1500 s",
+        "iso": "250"
       },
       {
         "file": "DSCF1136.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-19",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/1.2",
+        "exposure": "1/680 s",
+        "iso": "250"
       },
       {
         "file": "DSCF1144.webp",
@@ -52,42 +108,106 @@ export const PHOTOGRAPHY = [
       {
         "file": "DSCF1324.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-21",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/3.2",
+        "exposure": "1/600 s",
+        "iso": "250"
       },
       {
         "file": "DSCF1409.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-21",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/1.2",
+        "exposure": "1/850 s",
+        "iso": "250"
       },
       {
         "file": "DSCF1611.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-22",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/3.2",
+        "exposure": "1/2200 s",
+        "iso": "250"
       },
       {
         "file": "DSCF1673.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-22",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/1.2",
+        "exposure": "1/2400 s",
+        "iso": "250"
       },
       {
         "file": "DSCF2000.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-24",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/2.8",
+        "exposure": "1/450 s",
+        "iso": "250"
       },
       {
         "file": "DSCF2043.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-24",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/1.2",
+        "exposure": "1/80 s",
+        "iso": "640"
       },
       {
         "file": "DSCF2307.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-25",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/5.6",
+        "exposure": "1/240 s",
+        "iso": "250"
       },
       {
         "file": "DSCF2377.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-25",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/1.2",
+        "exposure": "1/80 s",
+        "iso": "400"
       },
       {
         "file": "DSCF2495.webp",
@@ -97,7 +217,15 @@ export const PHOTOGRAPHY = [
       {
         "file": "DSCF2662.webp",
         "orientation": "landscape",
-        "place": "Giappone"
+        "place": "Giappone",
+        "date": "2025-11-27",
+        "year": "2025",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF56mmF1.2 R WR",
+        "focalLength": "84 mm",
+        "aperture": "f/2.2",
+        "exposure": "1/300 s",
+        "iso": "250"
       }
     ]
   },
@@ -111,162 +239,290 @@ export const PHOTOGRAPHY = [
       {
         "file": "0077_2026-08-19_1541.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-19",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0095_2026-08-19_1619.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-19",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0097_2026-08-19_1623.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-19",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0102_2026-08-19_1821.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-19",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0106_2026-08-20_1136.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-20",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0125_2026-08-20_1953.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-20",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0135_2026-08-21_1118.webp",
         "orientation": "portrait",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-21",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0239_2026-08-23_1143.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-23",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0242_2026-08-23_1144.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-23",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0250_2026-08-23_1226.webp",
         "orientation": "portrait",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-23",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0260_2026-08-23_1319.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-23",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0266_2026-08-23_1322.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-23",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0340_2026-08-24_1504.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-24",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0409_2026-08-25_0905.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0412_2026-08-25_0907.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0446_2026-08-25_0928.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0451_2026-08-25_0938.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0457_2026-08-25_1527.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0479_2026-08-25_1555.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0490_2026-08-25_1624.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0500_2026-08-25_1855.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-25",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0506_2026-08-26_0608.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-26",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0614_2026-08-27_0702.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-27",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0616_2026-08-27_0708.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-27",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0709_2026-08-29_1205.webp",
         "orientation": "portrait",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-29",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF55-200mmF3.5-4.8 R LM OIS"
       },
       {
         "file": "0717_2026-08-29_1219.webp",
         "orientation": "portrait",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-29",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF55-200mmF3.5-4.8 R LM OIS"
       },
       {
         "file": "0747_2026-08-29_1515.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-29",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF55-200mmF3.5-4.8 R LM OIS"
       },
       {
         "file": "0766_2026-08-29_1732.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-29",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0775_2026-08-29_1741.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-29",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0779_2026-08-29_1742.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-29",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0839_2026-08-30_1153.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-30",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       },
       {
         "file": "0851_2026-08-30_1305.webp",
         "orientation": "landscape",
-        "place": "Parchi Del Nord America"
+        "place": "Parchi Del Nord America",
+        "date": "2026-08-30",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II"
       }
     ]
   },
@@ -280,47 +536,119 @@ export const PHOTOGRAPHY = [
       {
         "file": "DSCF5417.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-15",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "24 mm",
+        "aperture": "f/22",
+        "exposure": "1/10 s",
+        "iso": "320"
       },
       {
         "file": "DSCF5446.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-15",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "24 mm",
+        "aperture": "f/20",
+        "exposure": "1/100 s",
+        "iso": "500"
       },
       {
         "file": "DSCF5478.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-15",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "24 mm",
+        "aperture": "f/22",
+        "exposure": "1/25 s",
+        "iso": "500"
       },
       {
         "file": "DSCF5589.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-15",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "24 mm",
+        "aperture": "f/5.6",
+        "exposure": "1/1000 s",
+        "iso": "500"
       },
       {
         "file": "DSCF5642.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-15",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "24 mm",
+        "aperture": "f/14",
+        "exposure": "1/80 s",
+        "iso": "125"
       },
       {
         "file": "DSCF6163.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-17",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "24 mm",
+        "aperture": "f/16",
+        "exposure": "1/30 s",
+        "iso": "125"
       },
       {
         "file": "DSCF6186.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-17",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "24 mm",
+        "aperture": "f/11",
+        "exposure": "1/10 s",
+        "iso": "125"
       },
       {
         "file": "DSCF6193.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-17",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "46 mm",
+        "aperture": "f/11",
+        "exposure": "1/5 s",
+        "iso": "125"
       },
       {
         "file": "DSCF6197.webp",
         "orientation": "landscape",
-        "place": "Tenerife"
+        "place": "Tenerife",
+        "date": "2026-05-17",
+        "year": "2026",
+        "camera": "FUJIFILM X-T5",
+        "lens": "XF16-55mmF2.8 R LM WR II",
+        "focalLength": "45 mm",
+        "aperture": "f/10",
+        "exposure": "1/9 s",
+        "iso": "125"
       }
     ]
   },
@@ -334,37 +662,86 @@ export const PHOTOGRAPHY = [
       {
         "file": "IMG_7085.webp",
         "orientation": "landscape",
-        "place": "Trentino"
+        "place": "Trentino",
+        "date": "2025-07-25",
+        "year": "2025",
+        "camera": "FUJIFILM X100VI",
+        "focalLength": "23 mm",
+        "aperture": "f/7.1",
+        "exposure": "1/2700 s",
+        "iso": "250"
       },
       {
         "file": "IMG_7086.webp",
         "orientation": "landscape",
-        "place": "Trentino"
+        "place": "Trentino",
+        "date": "2025-07-25",
+        "year": "2025",
+        "camera": "FUJIFILM X100VI",
+        "focalLength": "23 mm",
+        "aperture": "f/5.6",
+        "exposure": "1/450 s",
+        "iso": "250"
       },
       {
         "file": "IMG_7087.webp",
         "orientation": "landscape",
-        "place": "Trentino"
+        "place": "Trentino",
+        "date": "2025-07-25",
+        "year": "2025",
+        "camera": "FUJIFILM X100VI",
+        "focalLength": "23 mm",
+        "aperture": "f/6.4",
+        "exposure": "1/600 s",
+        "iso": "250"
       },
       {
         "file": "IMG_7088.webp",
         "orientation": "landscape",
-        "place": "Trentino"
+        "place": "Trentino",
+        "date": "2025-07-26",
+        "year": "2025",
+        "camera": "FUJIFILM X100VI",
+        "focalLength": "23 mm",
+        "aperture": "f/4.5",
+        "exposure": "1/280 s",
+        "iso": "250"
       },
       {
         "file": "IMG_7089.webp",
         "orientation": "landscape",
-        "place": "Trentino"
+        "place": "Trentino",
+        "date": "2025-07-26",
+        "year": "2025",
+        "camera": "FUJIFILM X100VI",
+        "focalLength": "23 mm",
+        "aperture": "f/5.6",
+        "exposure": "1/420 s",
+        "iso": "250"
       },
       {
         "file": "IMG_7090.webp",
         "orientation": "landscape",
-        "place": "Trentino"
+        "place": "Trentino",
+        "date": "2025-07-26",
+        "year": "2025",
+        "camera": "FUJIFILM X100VI",
+        "focalLength": "23 mm",
+        "aperture": "f/4",
+        "exposure": "1/1100 s",
+        "iso": "250"
       },
       {
         "file": "IMG_7131.webp",
         "orientation": "landscape",
-        "place": "Trentino"
+        "place": "Trentino",
+        "date": "2025-07-26",
+        "year": "2025",
+        "camera": "FUJIFILM X100VI",
+        "focalLength": "23 mm",
+        "aperture": "f/16",
+        "exposure": "1/160 s",
+        "iso": "250"
       }
     ]
   }
