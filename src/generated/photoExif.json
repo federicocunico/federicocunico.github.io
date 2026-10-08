@@ -1,4 +1,88 @@
 {
+  "astro/DSCF5688-FINAL": {
+    "orientation": "landscape",
+    "place": "Tenerife"
+  },
+  "astro/HorseNebula": {
+    "orientation": "landscape",
+    "title": "Horsehead Nebula",
+    "catalog": "Barnard 33",
+    "type": "dark",
+    "date": "2024-12-16",
+    "integration": 3,
+    "equipment": "SeeStar S50"
+  },
+  "astro/IMG_0400": {
+    "orientation": "portrait",
+    "place": "Tenerife"
+  },
+  "astro/IMG_0402": {
+    "orientation": "landscape",
+    "place": "Tenerife"
+  },
+  "astro/M1-Crab": {
+    "orientation": "portrait",
+    "title": "Crab Nebula",
+    "catalog": "M1",
+    "type": "snr",
+    "date": "2024-12-16",
+    "integration": 3,
+    "equipment": "SeeStar S50"
+  },
+  "astro/M3-cluster": {
+    "orientation": "portrait",
+    "title": "Globular Cluster",
+    "catalog": "M3",
+    "type": "globular",
+    "date": "2024-12-16",
+    "integration": 3,
+    "equipment": "SeeStar S50"
+  },
+  "astro/M33-triangulum": {
+    "orientation": "landscape",
+    "title": "Triangulum Galaxy",
+    "catalog": "M33",
+    "type": "spiral",
+    "date": "2024-12-16",
+    "integration": 2,
+    "equipment": "SeeStar S50"
+  },
+  "astro/M45-Pleiadis": {
+    "orientation": "portrait",
+    "title": "Pleiades",
+    "catalog": "M45",
+    "type": "open",
+    "date": "2024-12-16",
+    "integration": 1,
+    "equipment": "SeeStar S50"
+  },
+  "astro/M45-Pleiadis-3h": {
+    "orientation": "portrait",
+    "title": "Pleiades — 3 h",
+    "catalog": "M45",
+    "type": "open",
+    "date": "2024-12-16",
+    "integration": 3,
+    "equipment": "SeeStar S50"
+  },
+  "astro/NGC2024-FlameNebula": {
+    "orientation": "landscape",
+    "title": "Flame Nebula",
+    "catalog": "NGC 2024",
+    "type": "emission",
+    "date": "2024-12-24",
+    "integration": 3,
+    "equipment": "SV550 80mm Apo · Celestron NexStar 130 · SVBony 705c"
+  },
+  "astro/RosettaNebula": {
+    "orientation": "portrait",
+    "title": "Rosette Nebula",
+    "catalog": "NGC 2237",
+    "type": "emission",
+    "date": "2024-12-16",
+    "integration": 3,
+    "equipment": "SeeStar S50"
+  },
   "giappone/DSCF0792": {
     "camera": "FUJIFILM X-T5",
     "lens": "XF16-80mmF4 R OIS WR",

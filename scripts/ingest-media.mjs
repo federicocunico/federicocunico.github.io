@@ -413,19 +413,65 @@ async function processAstroDir(dir, groupId, usedStems, items) {
     const ok = await processOne(src, out)
     if (!ok && !fs.existsSync(out)) continue
     const side = loadSidecar(dir, name)
+    const metaKey = `astro/${stem}`
+    const prev = photoExifStore[metaKey] || {}
     const orientation = (await orientationOf(src)) || undefined
-    items.push({
-      file: outName,
-      title: side.title || titleFromStem(stem),
-      group,
-      ...(orientation ? { orientation } : {}),
-      ...(side.catalog ? { catalog: side.catalog } : {}),
-      ...(side.type ? { type: side.type } : {}),
-      ...(side.date ? { date: side.date } : {}),
-      ...(side.integration != null ? { integration: Number(side.integration) } : {}),
-      ...(side.equipment ? { equipment: side.equipment } : {})
-    })
+    const extracted = await extractExif(src)
+
+    // Never invent a title from the filename — only sidecar / prior store / explicit side.title.
+    const sidecarPatch = {}
+    if (side.title) sidecarPatch.title = side.title
+    if (side.place) sidecarPatch.place = side.place
+    if (side.catalog) sidecarPatch.catalog = side.catalog
+    if (side.type) sidecarPatch.type = side.type
+    if (side.date) sidecarPatch.date = side.date
+    if (side.integration != null) sidecarPatch.integration = Number(side.integration)
+    if (side.equipment) sidecarPatch.equipment = side.equipment
+    if (side.lat != null && Number.isFinite(Number(side.lat))) sidecarPatch.lat = Number(side.lat)
+    if (side.lon != null && Number.isFinite(Number(side.lon))) sidecarPatch.lon = Number(side.lon)
+
+    let merged = mergeMeta(prev, extracted)
+    if (orientation) merged = mergeMeta(merged, { orientation })
+    merged = mergeMeta(merged, sidecarPatch)
+    // Drop filename-style titles left over from older ingests when no sidecar title is set.
+    if (!side.title && merged.title && looksLikeFilenameTitle(merged.title, stem)) {
+      delete merged.title
+    }
+    photoExifStore[metaKey] = mergeMeta(prev, merged)
+    const meta = photoExifStore[metaKey]
+
+    const item = { file: outName, group }
+    for (const k of [
+      'title',
+      'place',
+      'lat',
+      'lon',
+      'orientation',
+      'catalog',
+      'type',
+      'date',
+      'integration',
+      'equipment',
+      'camera',
+      'lens',
+      'focalLength',
+      'aperture',
+      'exposure',
+      'iso'
+    ]) {
+      if (meta[k] != null && meta[k] !== '') item[k] = meta[k]
+    }
+    items.push(item)
   }
+}
+
+/** True when title is just a humanized stem (e.g. "IMG 0400" from IMG_0400). */
+function looksLikeFilenameTitle(title, stem) {
+  const norm = (s) =>
+    String(s)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '')
+  return norm(title) === norm(stem) || norm(title) === norm(titleFromStem(stem))
 }
 
 async function ingestAstro() {

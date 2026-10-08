@@ -750,8 +750,8 @@ export const PHOTOGRAPHY = [
 export const ASTRO = [
   {
     "file": "M3-cluster.webp",
-    "title": "Globular Cluster",
     "group": "cluster",
+    "title": "Globular Cluster",
     "orientation": "portrait",
     "catalog": "M3",
     "type": "globular",
@@ -761,8 +761,8 @@ export const ASTRO = [
   },
   {
     "file": "M45-Pleiadis-3h.webp",
-    "title": "Pleiades — 3 h",
     "group": "cluster",
+    "title": "Pleiades — 3 h",
     "orientation": "portrait",
     "catalog": "M45",
     "type": "open",
@@ -772,8 +772,8 @@ export const ASTRO = [
   },
   {
     "file": "M45-Pleiadis.webp",
-    "title": "Pleiades",
     "group": "cluster",
+    "title": "Pleiades",
     "orientation": "portrait",
     "catalog": "M45",
     "type": "open",
@@ -783,8 +783,8 @@ export const ASTRO = [
   },
   {
     "file": "M33-triangulum.webp",
-    "title": "Triangulum Galaxy",
     "group": "galaxy",
+    "title": "Triangulum Galaxy",
     "orientation": "landscape",
     "catalog": "M33",
     "type": "spiral",
@@ -794,8 +794,8 @@ export const ASTRO = [
   },
   {
     "file": "HorseNebula.webp",
-    "title": "Horsehead Nebula",
     "group": "nebula",
+    "title": "Horsehead Nebula",
     "orientation": "landscape",
     "catalog": "Barnard 33",
     "type": "dark",
@@ -805,8 +805,8 @@ export const ASTRO = [
   },
   {
     "file": "M1-Crab.webp",
-    "title": "Crab Nebula",
     "group": "nebula",
+    "title": "Crab Nebula",
     "orientation": "portrait",
     "catalog": "M1",
     "type": "snr",
@@ -816,8 +816,8 @@ export const ASTRO = [
   },
   {
     "file": "NGC2024-FlameNebula.webp",
-    "title": "Flame Nebula",
     "group": "nebula",
+    "title": "Flame Nebula",
     "orientation": "landscape",
     "catalog": "NGC 2024",
     "type": "emission",
@@ -827,8 +827,8 @@ export const ASTRO = [
   },
   {
     "file": "RosettaNebula.webp",
-    "title": "Rosette Nebula",
     "group": "nebula",
+    "title": "Rosette Nebula",
     "orientation": "portrait",
     "catalog": "NGC 2237",
     "type": "emission",
@@ -838,20 +838,20 @@ export const ASTRO = [
   },
   {
     "file": "DSCF5688-FINAL.webp",
-    "title": "DSCF5688 FINAL",
     "group": "other",
+    "place": "Tenerife",
     "orientation": "landscape"
   },
   {
     "file": "IMG_0400.webp",
-    "title": "IMG 0400",
     "group": "other",
+    "place": "Tenerife",
     "orientation": "portrait"
   },
   {
     "file": "IMG_0402.webp",
-    "title": "IMG 0402",
     "group": "other",
+    "place": "Tenerife",
     "orientation": "landscape"
   }
 ]

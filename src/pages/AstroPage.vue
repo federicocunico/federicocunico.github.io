@@ -4,6 +4,7 @@ import { useLang } from '../composables/useLang'
 import { ASTRO } from '../siteContent'
 import { astroFull, astroThumb, astroSrcset } from '../lib/media'
 import { markLandscape } from '../lib/galleryImg'
+import { osmLink, osmEmbed } from '../lib/maps'
 import PageHead from '../components/PageHead.vue'
 import LightboxViewer from '../components/LightboxViewer.vue'
 import AppIcon from '../components/AppIcon.vue'
@@ -47,12 +48,20 @@ function detailRows(a) {
   ].filter(Boolean)
 }
 
+/** Caption label: place if set, else real title — never invent from filename. */
+function labelOf(a) {
+  return a.place || a.title || ''
+}
+
 const slides = computed(() =>
   visible.value.map((a) => ({
     thumb: astroThumb(a.file),
     full: astroFull(a.file),
-    title: a.title,
+    title: a.title || '',
     kicker: a.catalog || '',
+    place: a.place || '',
+    mapUrl: osmLink(a.lat, a.lon),
+    mapEmbed: osmEmbed(a.lat, a.lon),
     rows: detailRows(a)
   }))
 )
@@ -75,13 +84,13 @@ function metaLine(a) {
 
   <section v-if="latest" class="feature grid12 rise-3">
     <button class="feature-img tile" @click="openLatest">
-      <img :src="astroFull(latest.file)" :alt="latest.title" fetchpriority="high" @load="markLandscape" />
+      <img :src="astroFull(latest.file)" :alt="labelOf(latest)" fetchpriority="high" @load="markLandscape" />
       <span class="badge">{{ t.astroLatest }}</span>
     </button>
     <div class="feature-info">
       <div class="stack">
         <span v-if="latest.catalog" class="mono">{{ latest.catalog }}</span>
-        <h2 class="feature-title">{{ latest.title }}</h2>
+        <h2 v-if="labelOf(latest)" class="feature-title">{{ labelOf(latest) }}</h2>
       </div>
       <dl v-if="detailRows(latest).length" class="data">
         <template v-for="([label, value], i) in detailRows(latest)" :key="i">
@@ -109,13 +118,16 @@ function metaLine(a) {
             :src="astroThumb(a.file)"
             :srcset="astroSrcset(a.file)"
             sizes="(max-width: 720px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            :alt="a.title"
+            :alt="labelOf(a)"
             loading="lazy"
             decoding="async"
             @load="markLandscape"
           />
         </span>
-        <span class="caption"><span class="cap-title">{{ a.title }}</span><span v-if="a.catalog" class="mono">{{ a.catalog }}</span></span>
+        <span v-if="labelOf(a) || a.catalog" class="caption">
+          <span v-if="labelOf(a)" class="cap-title">{{ labelOf(a) }}</span>
+          <span v-if="a.catalog" class="mono">{{ a.catalog }}</span>
+        </span>
         <span v-if="metaLine(a)" class="mono meta">{{ metaLine(a) }}</span>
       </button>
     </div>
