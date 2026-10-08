@@ -87,7 +87,7 @@ export const CONTENT = {
     filters: { all: 'All', nebula: 'Nebulae', cluster: 'Clusters', galaxy: 'Galaxies' },
     types: { emission: 'Emission nebula', dark: 'Dark nebula', snr: 'Supernova remnant', globular: 'Globular cluster', open: 'Open cluster', spiral: 'Spiral galaxy' },
     field: { type: 'Type', date: 'Date', integration: 'Integration', equipment: 'Equipment', place: 'Place', year: 'Year' },
-    downloadOriginal: 'Download original',
+    openMap: 'Open map',
     prev: 'Previous',
     next: 'Next',
 
@@ -198,7 +198,7 @@ export const CONTENT = {
     filters: { all: 'Tutte', nebula: 'Nebulose', cluster: 'Ammassi', galaxy: 'Galassie' },
     types: { emission: 'Nebulosa a emissione', dark: 'Nebulosa oscura', snr: 'Resto di supernova', globular: 'Ammasso globulare', open: 'Ammasso aperto', spiral: 'Galassia a spirale' },
     field: { type: 'Tipo', date: 'Data', integration: 'Integrazione', equipment: 'Strumenti', place: 'Luogo', year: 'Anno' },
-    downloadOriginal: 'Scarica l’originale',
+    openMap: 'Apri mappa',
     prev: 'Precedente',
     next: 'Successiva',
 

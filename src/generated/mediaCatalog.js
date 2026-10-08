@@ -10,58 +10,94 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "DSCF0792.webp"
+        "file": "DSCF0792.webp",
+        "orientation": "portrait",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF0827.webp"
+        "file": "DSCF0827.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF0860.webp"
+        "file": "DSCF0860.webp",
+        "orientation": "portrait",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1034.webp"
+        "file": "DSCF1034.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1117.webp"
+        "file": "DSCF1117.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1126.webp"
+        "file": "DSCF1126.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1136.webp"
+        "file": "DSCF1136.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1144.webp"
+        "file": "DSCF1144.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1324.webp"
+        "file": "DSCF1324.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1409.webp"
+        "file": "DSCF1409.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1611.webp"
+        "file": "DSCF1611.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF1673.webp"
+        "file": "DSCF1673.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF2000.webp"
+        "file": "DSCF2000.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF2043.webp"
+        "file": "DSCF2043.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF2307.webp"
+        "file": "DSCF2307.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF2377.webp"
+        "file": "DSCF2377.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF2495.webp"
+        "file": "DSCF2495.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       },
       {
-        "file": "DSCF2662.webp"
+        "file": "DSCF2662.webp",
+        "orientation": "landscape",
+        "place": "Giappone"
       }
     ]
   },
@@ -73,100 +109,164 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "0077_2026-08-19_1541.webp"
+        "file": "0077_2026-08-19_1541.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0095_2026-08-19_1619.webp"
+        "file": "0095_2026-08-19_1619.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0097_2026-08-19_1623.webp"
+        "file": "0097_2026-08-19_1623.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0102_2026-08-19_1821.webp"
+        "file": "0102_2026-08-19_1821.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0106_2026-08-20_1136.webp"
+        "file": "0106_2026-08-20_1136.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0125_2026-08-20_1953.webp"
+        "file": "0125_2026-08-20_1953.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0135_2026-08-21_1118.webp"
+        "file": "0135_2026-08-21_1118.webp",
+        "orientation": "portrait",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0239_2026-08-23_1143.webp"
+        "file": "0239_2026-08-23_1143.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0242_2026-08-23_1144.webp"
+        "file": "0242_2026-08-23_1144.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0250_2026-08-23_1226.webp"
+        "file": "0250_2026-08-23_1226.webp",
+        "orientation": "portrait",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0260_2026-08-23_1319.webp"
+        "file": "0260_2026-08-23_1319.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0266_2026-08-23_1322.webp"
+        "file": "0266_2026-08-23_1322.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0340_2026-08-24_1504.webp"
+        "file": "0340_2026-08-24_1504.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0409_2026-08-25_0905.webp"
+        "file": "0409_2026-08-25_0905.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0412_2026-08-25_0907.webp"
+        "file": "0412_2026-08-25_0907.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0446_2026-08-25_0928.webp"
+        "file": "0446_2026-08-25_0928.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0451_2026-08-25_0938.webp"
+        "file": "0451_2026-08-25_0938.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0457_2026-08-25_1527.webp"
+        "file": "0457_2026-08-25_1527.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0479_2026-08-25_1555.webp"
+        "file": "0479_2026-08-25_1555.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0490_2026-08-25_1624.webp"
+        "file": "0490_2026-08-25_1624.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0500_2026-08-25_1855.webp"
+        "file": "0500_2026-08-25_1855.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0506_2026-08-26_0608.webp"
+        "file": "0506_2026-08-26_0608.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0614_2026-08-27_0702.webp"
+        "file": "0614_2026-08-27_0702.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0616_2026-08-27_0708.webp"
+        "file": "0616_2026-08-27_0708.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0709_2026-08-29_1205.webp"
+        "file": "0709_2026-08-29_1205.webp",
+        "orientation": "portrait",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0717_2026-08-29_1219.webp"
+        "file": "0717_2026-08-29_1219.webp",
+        "orientation": "portrait",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0747_2026-08-29_1515.webp"
+        "file": "0747_2026-08-29_1515.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0766_2026-08-29_1732.webp"
+        "file": "0766_2026-08-29_1732.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0775_2026-08-29_1741.webp"
+        "file": "0775_2026-08-29_1741.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0779_2026-08-29_1742.webp"
+        "file": "0779_2026-08-29_1742.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0839_2026-08-30_1153.webp"
+        "file": "0839_2026-08-30_1153.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       },
       {
-        "file": "0851_2026-08-30_1305.webp"
+        "file": "0851_2026-08-30_1305.webp",
+        "orientation": "landscape",
+        "place": "Parchi Del Nord America"
       }
     ]
   },
@@ -178,31 +278,49 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "DSCF5417.webp"
+        "file": "DSCF5417.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF5446.webp"
+        "file": "DSCF5446.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF5478.webp"
+        "file": "DSCF5478.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF5589.webp"
+        "file": "DSCF5589.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF5642.webp"
+        "file": "DSCF5642.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF6163.webp"
+        "file": "DSCF6163.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF6186.webp"
+        "file": "DSCF6186.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF6193.webp"
+        "file": "DSCF6193.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       },
       {
-        "file": "DSCF6197.webp"
+        "file": "DSCF6197.webp",
+        "orientation": "landscape",
+        "place": "Tenerife"
       }
     ]
   },
@@ -214,25 +332,39 @@ export const PHOTOGRAPHY = [
     },
     "items": [
       {
-        "file": "IMG_7085.webp"
+        "file": "IMG_7085.webp",
+        "orientation": "landscape",
+        "place": "Trentino"
       },
       {
-        "file": "IMG_7086.webp"
+        "file": "IMG_7086.webp",
+        "orientation": "landscape",
+        "place": "Trentino"
       },
       {
-        "file": "IMG_7087.webp"
+        "file": "IMG_7087.webp",
+        "orientation": "landscape",
+        "place": "Trentino"
       },
       {
-        "file": "IMG_7088.webp"
+        "file": "IMG_7088.webp",
+        "orientation": "landscape",
+        "place": "Trentino"
       },
       {
-        "file": "IMG_7089.webp"
+        "file": "IMG_7089.webp",
+        "orientation": "landscape",
+        "place": "Trentino"
       },
       {
-        "file": "IMG_7090.webp"
+        "file": "IMG_7090.webp",
+        "orientation": "landscape",
+        "place": "Trentino"
       },
       {
-        "file": "IMG_7131.webp"
+        "file": "IMG_7131.webp",
+        "orientation": "landscape",
+        "place": "Trentino"
       }
     ]
   }
@@ -243,6 +375,7 @@ export const ASTRO = [
     "file": "M3-cluster.webp",
     "title": "Globular Cluster",
     "group": "cluster",
+    "orientation": "portrait",
     "catalog": "M3",
     "type": "globular",
     "date": "2024-12-16",
@@ -253,6 +386,7 @@ export const ASTRO = [
     "file": "M45-Pleiadis-3h.webp",
     "title": "Pleiades — 3 h",
     "group": "cluster",
+    "orientation": "portrait",
     "catalog": "M45",
     "type": "open",
     "date": "2024-12-16",
@@ -263,6 +397,7 @@ export const ASTRO = [
     "file": "M45-Pleiadis.webp",
     "title": "Pleiades",
     "group": "cluster",
+    "orientation": "portrait",
     "catalog": "M45",
     "type": "open",
     "date": "2024-12-16",
@@ -273,6 +408,7 @@ export const ASTRO = [
     "file": "M33-triangulum.webp",
     "title": "Triangulum Galaxy",
     "group": "galaxy",
+    "orientation": "landscape",
     "catalog": "M33",
     "type": "spiral",
     "date": "2024-12-16",
@@ -283,6 +419,7 @@ export const ASTRO = [
     "file": "HorseNebula.webp",
     "title": "Horsehead Nebula",
     "group": "nebula",
+    "orientation": "landscape",
     "catalog": "Barnard 33",
     "type": "dark",
     "date": "2024-12-16",
@@ -293,6 +430,7 @@ export const ASTRO = [
     "file": "M1-Crab.webp",
     "title": "Crab Nebula",
     "group": "nebula",
+    "orientation": "portrait",
     "catalog": "M1",
     "type": "snr",
     "date": "2024-12-16",
@@ -303,6 +441,7 @@ export const ASTRO = [
     "file": "NGC2024-FlameNebula.webp",
     "title": "Flame Nebula",
     "group": "nebula",
+    "orientation": "landscape",
     "catalog": "NGC 2024",
     "type": "emission",
     "date": "2024-12-24",
@@ -313,6 +452,7 @@ export const ASTRO = [
     "file": "RosettaNebula.webp",
     "title": "Rosette Nebula",
     "group": "nebula",
+    "orientation": "portrait",
     "catalog": "NGC 2237",
     "type": "emission",
     "date": "2024-12-16",
@@ -322,16 +462,19 @@ export const ASTRO = [
   {
     "file": "DSCF5688-FINAL.webp",
     "title": "DSCF5688 FINAL",
-    "group": "other"
+    "group": "other",
+    "orientation": "landscape"
   },
   {
     "file": "IMG_0400.webp",
     "title": "IMG 0400",
-    "group": "other"
+    "group": "other",
+    "orientation": "portrait"
   },
   {
     "file": "IMG_0402.webp",
     "title": "IMG 0402",
-    "group": "other"
+    "group": "other",
+    "orientation": "landscape"
   }
 ]

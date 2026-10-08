@@ -53,7 +53,9 @@ Example (astro):
 }
 ```
 
-Photography fields: `title`, `place`, `year`.
+Photography fields: `title`, `place`, `year`, `lat`, `lon`.
+
+Without a sidecar, ingest reads EXIF GPS (when present), reverse-geocodes via OpenStreetMap Nominatim at ingest time, and falls back to the series name for `place` if there are no coordinates.
 
 Per series, optional `series.json` in the series folder:
 

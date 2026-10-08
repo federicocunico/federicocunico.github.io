@@ -21,6 +21,10 @@ defineProps({
     <g v-else-if="name === 'prev'" fill="currentColor"><path d="M18 5v14L8 12z" /><rect x="5" y="5" width="2" height="14" /></g>
     <g v-else-if="name === 'next'" fill="currentColor"><path d="M6 5v14l10-7z" /><rect x="17" y="5" width="2" height="14" /></g>
     <g v-else-if="name === 'bars'" fill="currentColor"><rect x="4" y="10" width="3" height="10" /><rect x="10.5" y="5" width="3" height="15" /><rect x="17" y="12" width="3" height="8" /></g>
+    <g v-else-if="name === 'pin'" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+      <path d="M12 22s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z" />
+      <circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none" />
+    </g>
   </svg>
 </template>
 

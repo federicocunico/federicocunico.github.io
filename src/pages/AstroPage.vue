@@ -128,7 +128,7 @@ function metaLine(a) {
 .feature { padding-bottom: 72px; }
 .feature-img { grid-column: 1 / span 8; height: 560px; position: relative; overflow: hidden; background: #0B0B0C; cursor: zoom-in; }
 .feature-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.feature-img img.is-landscape { animation: pan-x 22s ease-in-out infinite alternate; }
+.feature-img img.is-landscape { animation: pan-x 32s ease-in-out infinite alternate; }
 .badge { position: absolute; left: 16px; top: 16px; font-family: var(--mono); font-size: 12px; color: #FFFFFF; background: rgba(0, 0, 0, .45); padding: 4px 8px; }
 .feature-info { grid-column: 9 / span 4; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
 .stack { display: flex; flex-direction: column; gap: 8px; }
@@ -150,7 +150,7 @@ function metaLine(a) {
 .item { display: flex; flex-direction: column; gap: 10px; cursor: zoom-in; }
 .thumb { display: block; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: #0B0B0C; }
 .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.thumb img.is-landscape { animation: pan-x 18s ease-in-out infinite alternate; }
+.thumb img.is-landscape { animation: pan-x 28s ease-in-out infinite alternate; }
 @keyframes pan-x {
   from { object-position: 100% 50%; }
   to { object-position: 0% 50%; }

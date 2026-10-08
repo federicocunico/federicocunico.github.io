@@ -3,7 +3,7 @@ import { computed, ref, watch, onBeforeUnmount } from 'vue'
 import { useLang } from '../composables/useLang'
 import AppIcon from './AppIcon.vue'
 
-// items: [{ thumb, full, title, kicker, rows: [[label, value]] }]
+// items: [{ thumb, full, title, kicker, place, mapUrl, mapEmbed, rows: [[label, value]] }]
 const props = defineProps({
   items: { type: Array, required: true },
   index: { type: Number, default: -1 }
@@ -44,12 +44,12 @@ onBeforeUnmount(() => {
 
 <template>
   <Teleport to="body">
-    <div v-if="item" class="lightbox" role="dialog" aria-modal="true" :aria-label="item.title">
+    <div v-if="item" class="lightbox" role="dialog" aria-modal="true" :aria-label="item.title || item.place || t.close">
       <div class="stage" @click.self="close">
         <div class="frame" @click="close">
           <!-- Blurred thumb while the full image loads; hidden once the full is ready. -->
           <img v-show="!loaded" :src="item.thumb" alt="" class="img low" aria-hidden="true" />
-          <img :key="item.full" :src="item.full" :alt="item.title" class="img full" :class="{ on: loaded }" @load="loaded = true" />
+          <img :key="item.full" :src="item.full" :alt="item.title || item.place || ''" class="img full" :class="{ on: loaded }" @load="loaded = true" />
         </div>
       </div>
 
@@ -60,8 +60,8 @@ onBeforeUnmount(() => {
             <button class="icon-btn" :aria-label="t.close" @click="close"><AppIcon name="close" :size="20" /></button>
           </div>
           <div class="titles">
-            <span class="mono">{{ item.kicker }}</span>
-            <h2 class="title">{{ item.title }}</h2>
+            <span v-if="item.kicker" class="mono">{{ item.kicker }}</span>
+            <h2 v-if="item.title" class="title">{{ item.title }}</h2>
           </div>
           <dl v-if="item.rows && item.rows.length" class="sheet">
             <template v-for="[label, value] in item.rows" :key="label">
@@ -69,7 +69,31 @@ onBeforeUnmount(() => {
               <dd>{{ value }}</dd>
             </template>
           </dl>
-          <a :href="item.full" download class="btn dl">{{ t.downloadOriginal }} <AppIcon name="download" /></a>
+
+          <div v-if="item.place || item.mapUrl || item.mapEmbed" class="place-block">
+            <div class="place-head">
+              <span class="mono">{{ t.field.place }}</span>
+              <a
+                v-if="item.mapUrl"
+                class="map-link"
+                :href="item.mapUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AppIcon name="pin" :size="16" />
+                <span>{{ item.place || t.openMap }}</span>
+              </a>
+              <span v-else-if="item.place" class="place-only">{{ item.place }}</span>
+            </div>
+            <iframe
+              v-if="item.mapEmbed"
+              class="map-embed"
+              :src="item.mapEmbed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              :title="item.place || t.openMap"
+            />
+          </div>
         </div>
         <div v-if="items.length > 1" class="pager">
           <button class="btn step" @click="go(-1)"><AppIcon name="left" /><span>{{ t.prev }}</span></button>
@@ -118,8 +142,30 @@ onBeforeUnmount(() => {
 .sheet { display: grid; grid-template-columns: 110px 1fr; font-family: var(--mono); font-size: 13px; line-height: 1.5; border-bottom: 1px solid #222326; }
 .sheet dt, .sheet dd { padding: 10px 0; border-top: 1px solid #222326; }
 .sheet dt { color: #8A8C92; }
-.btn.dl { justify-content: space-between; border: 1px solid #34353A; color: #EDEDEA; }
-.btn.dl:hover { border-color: #EDEDEA; color: #EDEDEA; }
+
+.place-block { display: flex; flex-direction: column; gap: 12px; }
+.place-head { display: flex; flex-direction: column; gap: 8px; }
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #EDEDEA;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid #34353A;
+  padding-bottom: 8px;
+  width: fit-content;
+}
+.map-link:hover { border-color: #EDEDEA; }
+.place-only { font-size: 17px; font-weight: 500; }
+.map-embed {
+  width: 100%;
+  height: 180px;
+  border: 1px solid #34353A;
+  background: #111;
+}
+
 .pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .step { height: 48px; justify-content: center; border: 1px solid #34353A; color: #EDEDEA; }
 .step:hover { border-color: #EDEDEA; }
@@ -135,5 +181,6 @@ onBeforeUnmount(() => {
   .title { font-size: 24px; }
   .sheet { grid-template-columns: 96px 1fr; font-size: 12px; }
   .sheet dt, .sheet dd { padding: 6px 0; }
+  .map-embed { height: 140px; }
 }
 </style>
