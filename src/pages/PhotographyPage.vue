@@ -5,6 +5,7 @@ import { PHOTOGRAPHY } from '../siteContent'
 import { photoFull, photoThumb, photoSrcset } from '../lib/media'
 import { markLandscape } from '../lib/galleryImg'
 import { layoutByOrientation, slotKind } from '../lib/layoutByOrientation'
+import { sortByDateDesc } from '../lib/sortByDate'
 import { osmLink, osmEmbed } from '../lib/maps'
 import PageHead from '../components/PageHead.vue'
 import LightboxViewer from '../components/LightboxViewer.vue'
@@ -19,9 +20,11 @@ const pool = computed(() =>
   PHOTOGRAPHY.flatMap((s) => (s.items || []).map((item) => ({ ...item, series: s.id })))
 )
 
-const all = computed(() =>
-  series.value === 'all' ? layoutByOrientation(pool.value) : layoutByOrientation(pool.value.filter((p) => p.series === series.value))
-)
+const all = computed(() => {
+  const filtered = series.value === 'all' ? pool.value : pool.value.filter((p) => p.series === series.value)
+  // Date order first (newest → oldest); orientation layout keeps relative order in each bucket.
+  return layoutByOrientation(sortByDateDesc(filtered))
+})
 
 const visible = all
 

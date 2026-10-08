@@ -5,6 +5,7 @@ import { ASTRO } from '../siteContent'
 import { astroFull, astroThumb, astroSrcset } from '../lib/media'
 import { markLandscape } from '../lib/galleryImg'
 import { osmLink, osmEmbed } from '../lib/maps'
+import { sortByDateDesc } from '../lib/sortByDate'
 import PageHead from '../components/PageHead.vue'
 import LightboxViewer from '../components/LightboxViewer.vue'
 import AppIcon from '../components/AppIcon.vue'
@@ -32,7 +33,10 @@ const filters = computed(() => {
   return [all, ...rest].filter((f) => f.n > 0)
 })
 
-const visible = computed(() => (filter.value === 'all' ? ASTRO : ASTRO.filter((a) => a.group === filter.value)))
+const visible = computed(() => {
+  const list = filter.value === 'all' ? ASTRO : ASTRO.filter((a) => a.group === filter.value)
+  return sortByDateDesc(list)
+})
 
 function typeLabel(type) {
   if (!type) return ''
