@@ -6,28 +6,40 @@ import sharp from 'sharp'
 import pdfMake from 'pdfmake/build/pdfmake.js'
 import pdfFonts from 'pdfmake/build/vfs_fonts.js'
 import { CONTENT, CONFIG, LINKS, PUBLICATIONS, PROFILE } from '../src/siteContent.js'
-import { buildCvDocDefinition } from '../src/lib/cvPdfTemplate.js'
+import { buildCvDocDefinition, CV_FONT } from '../src/lib/cvPdfTemplate.js'
 
-pdfMake.vfs = pdfFonts.pdfMake?.vfs ?? pdfFonts
+import { createRequire } from 'node:module'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const outDir = path.join(__dirname, '..', 'public', 'research')
 fs.mkdirSync(outDir, { recursive: true })
 
-// Round head-and-shoulders crop of the portrait, embedded as a PNG data URL.
-async function roundPortrait() {
+// Fonts: the site's Instrument Sans (from @fontsource) next to pdfmake's bundled Roboto.
+const vfs = { ...(pdfFonts.pdfMake?.vfs ?? pdfFonts) }
+const fontDir = path.join(path.dirname(createRequire(import.meta.url).resolve('@fontsource/instrument-sans/package.json')), 'files')
+const font = (weight, style) => {
+  const name = `instrument-sans-latin-${weight}-${style}.woff`
+  vfs[name] = fs.readFileSync(path.join(fontDir, name)).toString('base64')
+  return name
+}
+const fonts = {
+  Roboto: { normal: 'Roboto-Regular.ttf', bold: 'Roboto-Medium.ttf', italics: 'Roboto-Italic.ttf', bolditalics: 'Roboto-MediumItalic.ttf' },
+  [CV_FONT]: { normal: font(400, 'normal'), bold: font(600, 'normal'), italics: font(400, 'italic'), bolditalics: font(600, 'italic') }
+}
+
+// Head-and-shoulders crop of the portrait (5:6), embedded as a JPEG data URL.
+async function portrait() {
   const src = path.join(__dirname, '..', 'assets-src', 'portrait.jpg')
   if (!fs.existsSync(src)) return null
   const { width, height } = await sharp(src).rotate().metadata()
-  const side = Math.round(Math.min(width, height) * 0.62)
-  const region = { left: Math.round((width - side) / 2), top: Math.round(height * 0.1), width: side, height: side }
-  const size = 400
-  const mask = Buffer.from(`<svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${size / 2}"/></svg>`)
-  const png = await sharp(src).rotate().extract(region).resize(size, size).composite([{ input: mask, blend: 'dest-in' }]).png().toBuffer()
-  return `data:image/png;base64,${png.toString('base64')}`
+  const w = Math.round(width * 0.72)
+  const h = Math.min(Math.round((w * 6) / 5), height - Math.round(height * 0.06))
+  const region = { left: Math.round((width - w) / 2), top: Math.round(height * 0.06), width: w, height: h }
+  const jpg = await sharp(src).rotate().extract(region).resize({ width: 500 }).jpeg({ quality: 85 }).toBuffer()
+  return `data:image/jpeg;base64,${jpg.toString('base64')}`
 }
 
-const photo = await roundPortrait()
+const photo = await portrait()
 
 const only = process.argv.includes('--it') ? ['it'] : process.argv.includes('--en') ? ['en'] : ['en', 'it']
 
@@ -42,7 +54,7 @@ for (const lang of only) {
   })
   const outFile = path.join(outDir, `cv-${lang}.pdf`)
   await new Promise((resolve) => {
-    pdfMake.createPdf(doc).getBuffer((buffer) => {
+    pdfMake.createPdf(doc, null, fonts, vfs).getBuffer((buffer) => {
       fs.writeFileSync(outFile, buffer)
       console.log(`Generated ${path.relative(process.cwd(), outFile)} (${lang.toUpperCase()})`)
       resolve()

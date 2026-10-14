@@ -261,7 +261,8 @@ export const CONFIG = {
   portrait: { small: '/profile/portrait-640.webp', large: '/profile/portrait-1280.webp' },
   scholarAuthorName: 'Federico Cunico',
   pubsCount: 5,
-  location: 'Verona, Italy'
+  location: 'Verona, Italy',
+  cvLocation: 'Verona (VR)'
 }
 
 export const PROFILE = {
