@@ -15,7 +15,7 @@ export const CONTENT = {
 
     // Home
     homeKicker: 'Portfolio',
-    homeIntro: 'My interests are in computer vision and deep learning applied to human analysis, ranging from industrial human-robot collaboration and recently to clinical psychology. Outside the lab I have passion for photography, music, videogames and role play games.',
+    homeIntro: 'I am interested in machine learning and deep learning applied to real-world problems: I enjoy analysing a problem and designing AI-based solutions for it. My background is in computer vision, and I also work with time-series forecasting and Large Language Models. Outside work I have a passion for photography, music, videogames and role-playing games.',
     homeRoleLabel: 'Role',
     homeRole: 'Machine Learning Engineer & Researcher',
     homeEduLabel: 'Education',
@@ -34,15 +34,15 @@ export const CONTENT = {
     // Research (keys also used by the CV generator)
     heroRole: 'Researcher in Computer Vision & AI · Machine Learning and Software Engineer',
     heroTag: 'PhD in Computer Science',
-    heroIntro: 'My work focuses on computer vision and deep learning with humans at the center. I previously worked on human-robot collaboration, and now I am exploring applications in clinical psychology. I am also a full-stack software engineer, comfortable from research prototypes to production systems.',
+    heroIntro: 'I am interested in machine learning and deep learning applied to real-world problems: I like to analyse a problem and think of AI-based solutions for it. My background is in computer vision, and I also have experience with forecasting and Large Language Models. I am also a full-stack software engineer, comfortable from research prototypes to production systems.',
     researchTitle: 'Research',
-    researchKicker: 'Computer Vision · Deep Learning · Software',
+    researchKicker: 'Machine Learning · Deep Learning · Software',
     researchIntro: 'My research focuses on making machines understand people, and helping people to get understood.',
     topicsTitle: 'Topics',
     researchTopics: [
-      { title: 'Human-Robot Interaction', text: 'Human-centered analysis of industrial scenes: pose forecasting, safety and cooperation between people and robots on the factory floor.' },
-      { title: 'Computer Vision & Deep Learning', text: 'Applying vision and deep learning to various domains, from industrial applications to clinical psychology.' },
-      { title: 'Psychological Applications', text: 'Investigating the dyadic synchronization in therapeutic settings, using computer science and deep learning techniques.' }
+      { title: 'AI & Deep Learning', text: 'Machine learning and deep learning for real-world problems: computer vision, Large Language Models and time-series forecasting.' },
+      { title: 'Psychological Applications', text: 'Investigating the dyadic synchronization in therapeutic settings, using computer science and deep learning techniques.' },
+      { title: 'Robotics', text: 'Human-centered analysis of industrial scenes: pose forecasting, safety and cooperation between people and robots on the factory floor.' }
     ],
     pubsTitle: 'Selected publications',
     pubsNote: 'Full list on Google Scholar',
@@ -50,7 +50,7 @@ export const CONTENT = {
     citations: 'citations',
     experienceTitle: 'Experience',
     experience: [
-      { role: 'Machine Learning Specialist', org: 'Humatics s.r.l., Verona', period: '2026 — now', text: 'Applying machine learning techniques to solve real-world industrial problems: from computer vision to natural language processing.' },
+      { role: 'Machine Learning Specialist', org: 'Humatics s.r.l., Verona', period: '2026 — now', text: 'Applying machine learning techniques to solve real-world industrial problems: from computer vision to natural language processing and forecasting.' },
       { role: 'Postdoctoral Researcher', org: 'University of Verona — ALTAIR Lab & Intelligo Labs', period: '2024 — 2025', text: 'Computer vision and deep learning applied to surgical robotics.' },
       { role: 'AI Software Engineer', org: 'Humatics s.r.l., Verona', period: 'Feb 2020 — Oct 2021', text: 'Computer vision algorithms for industrial applications, in particular surveillance video analysis.' }
     ],
@@ -142,7 +142,7 @@ export const CONTENT = {
     close: 'Chiudi',
 
     homeKicker: 'Portfolio',
-    homeIntro: 'I miei interessi riguardano la computer vision e il deep learning applicati all’analisi dell’essere umano, dalla collaborazione uomo-robot in ambito industriale fino, di recente, alla psicologia clinica. Fuori dal laboratorio ho la passione per la fotografia, la musica, i videogiochi e i giochi di ruolo.',
+    homeIntro: 'Mi interessa il machine learning e il deep learning applicati a problemi reali: mi piace analizzare un problema e progettare soluzioni basate sull’intelligenza artificiale. La mia formazione è orientata alla computer vision, e lavoro anche con il forecasting di serie temporali e i Large Language Models. Fuori dal lavoro ho la passione per la fotografia, la musica, i videogiochi e i giochi di ruolo.',
     homeRoleLabel: 'Ruolo',
     homeRole: 'Ingegnere di Machine Learning e Ricercatore',
     homeEduLabel: 'Formazione',
@@ -160,15 +160,15 @@ export const CONTENT = {
 
     heroRole: 'Ricercatore in Computer Vision e IA · Ingegnere di Machine Learning e del software',
     heroTag: 'Dottorato di ricerca in Informatica',
-    heroIntro: 'Il mio lavoro si concentra su computer vision e deep learning con le persone al centro. In passato mi sono occupato di collaborazione uomo-robot, e ora sto esplorando applicazioni nella psicologia clinica. Sono anche ingegnere del software full-stack, a mio agio dal prototipo di ricerca ai sistemi in produzione.',
+    heroIntro: 'Mi interessa il machine learning e il deep learning applicati a problemi reali: mi piace analizzare un problema e pensare a soluzioni basate sull’intelligenza artificiale. La mia formazione è orientata alla computer vision, ma ho competenze anche di forecasting e di Large Language Models. Sono anche ingegnere del software full-stack, a mio agio dal prototipo di ricerca ai sistemi in produzione.',
     researchTitle: 'Ricerca',
-    researchKicker: 'Computer Vision · Deep Learning · Software',
+    researchKicker: 'Machine Learning · Deep Learning · Software',
     researchIntro: 'La mia ricerca punta a far comprendere le persone alle macchine, e ad aiutare le persone a farsi comprendere.',
     topicsTitle: 'Temi',
     researchTopics: [
-      { title: 'Interazione uomo-robot', text: 'Analisi di scene industriali centrata sull’uomo: previsione della posa, sicurezza e cooperazione tra persone e robot in fabbrica.' },
-      { title: 'Computer Vision e Deep Learning', text: 'Applicazione di visione artificiale e deep learning a diversi ambiti, dalle applicazioni industriali alla psicologia clinica.' },
-      { title: 'Applicazioni psicologiche', text: 'Studio della sincronizzazione diadica in contesti terapeutici, con tecniche di informatica e deep learning.' }
+      { title: 'IA e Deep Learning', text: 'Machine learning e deep learning per problemi reali: computer vision, Large Language Models e forecasting di serie temporali.' },
+      { title: 'Applicazioni psicologiche', text: 'Studio della sincronizzazione diadica in contesti terapeutici, con tecniche di informatica e deep learning.' },
+      { title: 'Robotica', text: 'Analisi di scene industriali centrata sull’uomo: previsione della posa, sicurezza e cooperazione tra persone e robot in fabbrica.' }
     ],
     pubsTitle: 'Pubblicazioni selezionate',
     pubsNote: 'Elenco completo su Google Scholar',
@@ -176,7 +176,7 @@ export const CONTENT = {
     citations: 'citazioni',
     experienceTitle: 'Esperienza',
     experience: [
-      { role: 'Specialista di Machine Learning', org: 'Humatics s.r.l., Verona', period: '2026 — oggi', text: 'Applicazione di tecniche di machine learning a problemi industriali reali: dalla computer vision all’elaborazione del linguaggio naturale.' },
+      { role: 'Specialista di Machine Learning', org: 'Humatics s.r.l., Verona', period: '2026 — oggi', text: 'Applicazione di tecniche di machine learning a problemi industriali reali: dalla computer vision all’elaborazione del linguaggio naturale e al forecasting.' },
       { role: 'Ricercatore post-doc', org: 'Università di Verona — ALTAIR Lab & Intelligo Labs', period: '2024 — 2025', text: 'Computer vision e deep learning applicati alla robotica chirurgica.' },
       { role: 'AI Software Engineer', org: 'Humatics s.r.l., Verona', period: 'Feb 2020 — Ott 2021', text: 'Algoritmi di computer vision per applicazioni industriali, in particolare analisi di video di sorveglianza.' }
     ],

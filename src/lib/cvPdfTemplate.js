@@ -1,124 +1,123 @@
-const ACCENT = '#8B7355'
-const INK = '#1C1A17'
-const MUTED = '#5C574F'
+// One-and-a-half-column CV: a narrow left column for section names, dates and
+// headings, a wide right column for the content. Monochrome; hierarchy comes
+// from font weight and grey levels only.
 
-function sectionTitle(text) {
+const INK = '#111111'
+const SOFT = '#3A3A3A'
+const MUTED = '#6B6B6B'
+const RULE = '#111111'
+
+const PAGE_WIDTH = 595.28 // A4
+const MARGIN_X = 42
+const LEFT = 108 // left column width
+const GAP = 12
+const RIGHT = PAGE_WIDTH - 2 * MARGIN_X - LEFT - GAP
+
+function row(left, right, marginBottom = 9) {
   return {
-    text: text.toUpperCase(),
-    style: 'sectionHeader',
-    margin: [0, 16, 0, 8]
+    columns: [
+      { width: LEFT, stack: [].concat(left ?? ''), alignment: 'right' },
+      { width: RIGHT, stack: [].concat(right) }
+    ],
+    columnGap: GAP,
+    margin: [0, 0, 0, marginBottom],
+    unbreakable: true
   }
 }
 
-function timelineEntry({ period, title, subtitle, body }) {
+function section(title) {
   return {
+    ...row(
+      { text: title.toUpperCase(), style: 'section' },
+      { canvas: [{ type: 'line', x1: 0, y1: 0, x2: RIGHT, y2: 0, lineWidth: 0.8, lineColor: RULE }], margin: [0, 5.5, 0, 0] },
+      7
+    ),
+    margin: [0, 8, 0, 7]
+  }
+}
+
+function entry({ period, title, subtitle, body }) {
+  return row({ text: period, style: 'period' }, [
+    { text: title, style: 'title' },
+    { text: subtitle, style: 'subtitle', margin: [0, 1, 0, 0] },
+    { text: body, style: 'body', margin: [0, 2, 0, 0] }
+  ])
+}
+
+function headed(heading, body) {
+  return row({ text: heading, style: 'heading' }, { text: body, style: 'body' }, 6)
+}
+
+const strip = (url) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
+
+export function buildCvDocDefinition({ t, links, config, publications, profile, photo }) {
+  const contacts = [
+    [t.field.place, config.location],
+    ['Web', strip(links.site), links.site],
+    ['LinkedIn', strip(links.linkedin), links.linkedin],
+    ['GitHub', strip(links.github), links.github],
+    ['Scholar', 'Google Scholar profile', links.scholar],
+    ['ORCID', strip(links.orcid).replace('orcid.org/', ''), links.orcid]
+  ]
+
+  const header = {
     columns: [
-      { width: 72, text: period, style: 'period' },
       {
-        width: '*',
+        width: LEFT,
+        stack: photo ? [{ image: photo, width: 84, alignment: 'right' }] : [{ text: '' }]
+      },
+      {
+        width: RIGHT,
         stack: [
-          { text: title, style: 'entryTitle' },
-          { text: subtitle, style: 'entrySub' },
-          { text: body, style: 'entryBody', margin: [0, 3, 0, 0] }
+          { text: `${profile.name}, ${profile.suffix}`, style: 'name' },
+          { text: t.heroRole, style: 'role', margin: [0, 3, 0, 9] },
+          {
+            table: {
+              widths: [46, '*'],
+              body: contacts.map(([label, value, link]) => [
+                { text: label, style: 'contactLabel' },
+                { text: value, style: 'contact', ...(link ? { link } : {}) }
+              ])
+            },
+            layout: { defaultBorder: false, paddingLeft: () => 0, paddingRight: () => 6, paddingTop: () => 0.6, paddingBottom: () => 0.6 }
+          }
         ]
       }
     ],
-    columnGap: 12,
-    margin: [0, 0, 0, 10]
+    columnGap: GAP,
+    margin: [0, 0, 0, 6]
   }
-}
 
-function publicationEntry(pub, index) {
-  return {
-    margin: [0, 0, 0, 8],
-    stack: [
-      {
-        text: `${index + 1}. ${pub.title}`,
-        style: 'pubTitle'
-      },
-      { text: pub.authors, style: 'pubAuthors', margin: [0, 2, 0, 0] },
-      {
-        text: `${pub.venue} · ${pub.year}`,
-        style: 'pubVenue',
-        margin: [0, 2, 0, 0]
-      }
-    ]
-  }
-}
-
-export function buildCvDocDefinition({ t, links, config, publications, profile }) {
-  const contactLine = [
-    config.location,
-    links.site,
-    links.linkedin,
-    links.scholar,
-    links.github,
-    links.orcid
-  ].join('  ·  ')
+  const pubs = [...publications].sort((a, b) => Number(b.year) - Number(a.year))
 
   const content = [
-    {
-      columns: [
-        {
-          width: '*',
-          stack: [
-            { text: profile.name, style: 'name' },
-            { text: profile.suffix, style: 'suffix' },
-            { text: t.heroRole, style: 'role', margin: [0, 6, 0, 0] },
-            { text: t.heroTag, style: 'tag', margin: [0, 4, 0, 0] }
-          ]
-        }
-      ]
-    },
-    { text: contactLine, style: 'contact', margin: [0, 10, 0, 0] },
-    { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 495, y2: 0, lineWidth: 1, lineColor: ACCENT }], margin: [0, 12, 0, 0] },
+    header,
 
-    sectionTitle(t.researchTitle),
-    { text: t.heroIntro, style: 'body', margin: [0, 0, 0, 8] },
-    ...t.researchTopics.map((topic) => ({
-      margin: [0, 0, 0, 6],
-      stack: [
-        { text: topic.title, style: 'topicTitle' },
-        { text: topic.text, style: 'topicBody', margin: [0, 2, 0, 0] }
-      ]
-    })),
+    section(t.cvProfileTitle),
+    row(null, { text: t.heroIntro, style: 'body' }, 2),
 
-    sectionTitle(t.experienceTitle),
-    ...t.experience.map((job) =>
-      timelineEntry({
-        period: job.period,
-        title: job.role,
-        subtitle: job.org,
-        body: job.text
-      })
+    section(t.experienceTitle),
+    ...t.experience.map((job) => entry({ period: job.period, title: job.role, subtitle: job.org, body: job.text })),
+
+    section(t.educationTitle),
+    ...t.education.map((edu) => entry({ period: edu.period, title: edu.degree, subtitle: edu.org, body: edu.text })),
+
+    section(t.researchTitle),
+    ...t.researchTopics.map((topic) => headed(topic.title, topic.text)),
+
+    section(t.pubsTitle),
+    ...pubs.map((pub) =>
+      row({ text: pub.year, style: 'period' }, [
+        { text: pub.title, style: 'pubTitle' },
+        { text: pub.authors, style: 'small', margin: [0, 1, 0, 0] },
+        { text: pub.venue, style: 'smallItalic', margin: [0, 1, 0, 0] }
+      ], 7)
     ),
+    row(null, { text: `${t.pubsNote}: ${strip(links.scholar)}`, link: links.scholar, style: 'smallItalic' }, 2),
 
-    sectionTitle(t.educationTitle),
-    ...t.education.map((edu) =>
-      timelineEntry({
-        period: edu.period,
-        title: edu.degree,
-        subtitle: edu.org,
-        body: edu.text
-      })
-    ),
-
-    sectionTitle(t.cvInterestsTitle),
-    ...[[t.astroTitle, t.astroText], [t.musicTitle, t.musicText]].map(([title, text]) => ({
-      margin: [0, 0, 0, 6],
-      stack: [
-        { text: title, style: 'topicTitle' },
-        { text, style: 'topicBody', margin: [0, 2, 0, 0] }
-      ]
-    })),
-
-    sectionTitle(t.pubsTitle),
-    ...[...publications].sort((a, b) => Number(b.year) - Number(a.year)).map((pub, index) => publicationEntry(pub, index)),
-    {
-      text: `${t.pubsNote}: ${links.scholar}`,
-      style: 'footnote',
-      margin: [0, 4, 0, 0]
-    }
+    section(t.cvInterestsTitle),
+    headed(t.astroTitle, t.astroText),
+    headed(t.musicTitle, t.musicText)
   ]
 
   return {
@@ -128,36 +127,22 @@ export function buildCvDocDefinition({ t, links, config, publications, profile }
       subject: 'Curriculum Vitae'
     },
     pageSize: 'A4',
-    pageMargins: [48, 48, 48, 48],
-    defaultStyle: {
-      font: 'Roboto',
-      fontSize: 9.5,
-      color: INK,
-      lineHeight: 1.25
-    },
+    pageMargins: [MARGIN_X, 36, MARGIN_X, 36],
+    defaultStyle: { font: 'Roboto', fontSize: 9, color: INK, lineHeight: 1.22 },
     styles: {
-      name: { fontSize: 24, bold: true, color: INK },
-      suffix: { fontSize: 11, color: MUTED, margin: [0, -2, 0, 0] },
-      role: { fontSize: 10.5, color: ACCENT, bold: true },
-      tag: { fontSize: 9.5, italics: true, color: MUTED },
-      contact: { fontSize: 8.5, color: MUTED },
-      sectionHeader: {
-        fontSize: 8.5,
-        bold: true,
-        color: ACCENT,
-        characterSpacing: 1.2
-      },
-      body: { fontSize: 9.5, color: '#333333' },
-      topicTitle: { fontSize: 10, bold: true },
-      topicBody: { fontSize: 9, color: MUTED },
-      period: { fontSize: 8.5, color: MUTED },
-      entryTitle: { fontSize: 10.5, bold: true },
-      entrySub: { fontSize: 9.5, italics: true, color: '#444444' },
-      entryBody: { fontSize: 9, color: MUTED },
-      pubTitle: { fontSize: 9.5, bold: true },
-      pubAuthors: { fontSize: 8.5, color: MUTED },
-      pubVenue: { fontSize: 8.5, italics: true, color: '#555555' },
-      footnote: { fontSize: 8, color: MUTED, italics: true }
+      name: { fontSize: 21, bold: true, characterSpacing: -0.2 },
+      role: { fontSize: 10, color: SOFT },
+      contactLabel: { fontSize: 8.3, bold: true, color: INK },
+      contact: { fontSize: 8.3, color: SOFT },
+      section: { fontSize: 9, bold: true, characterSpacing: 1 },
+      period: { fontSize: 8.5, italics: true, color: MUTED },
+      heading: { fontSize: 9, bold: true },
+      title: { fontSize: 10, bold: true },
+      subtitle: { fontSize: 9, italics: true, color: SOFT },
+      body: { fontSize: 9, color: SOFT },
+      pubTitle: { fontSize: 9, bold: true },
+      small: { fontSize: 8.3, color: MUTED },
+      smallItalic: { fontSize: 8.3, italics: true, color: MUTED }
     },
     content
   }
