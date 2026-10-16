@@ -1,5 +1,4 @@
 <script setup>
-import { computed, h } from 'vue'
 import { useLang } from '../composables/useLang'
 import { CONFIG, ASTRO, PHOTOGRAPHY, MUSIC } from '../siteContent'
 import { astroThumb, photoThumb } from '../lib/media'
@@ -7,17 +6,21 @@ import AppIcon from '../components/AppIcon.vue'
 
 const { t } = useLang()
 
-const preferredAstro = ['NGC2024-FlameNebula.webp', 'M1-Crab.webp', 'RosettaNebula.webp']
-const picked = preferredAstro.map((f) => ASTRO.find((a) => a.file === f)).filter(Boolean)
-const astroPreview = (picked.length ? picked : ASTRO.slice(0, 3)).map((a) => ({
-  src: astroThumb(a.file),
-  alt: a.title
-}))
+// Three random picks per gallery, drawn again on every visit to the index.
+function sample(list, n = 3) {
+  const copy = [...list]
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[copy[i], copy[j]] = [copy[j], copy[i]]
+  }
+  return copy.slice(0, n)
+}
 
-const photoPreview = computed(() => {
-  const series = PHOTOGRAPHY.find((s) => s.items && s.items.length)
-  return series ? { src: photoThumb(series.id, series.items[0].file), alt: series.items[0].title || '' } : null
-})
+const astroPreview = sample(ASTRO).map((a) => ({ src: astroThumb(a.file), alt: a.title }))
+
+const photoPreview = sample(PHOTOGRAPHY.flatMap((s) => (s.items || []).map((item) => ({ series: s, item })))).map(
+  ({ series, item }) => ({ src: photoThumb(series.id, item.file), alt: item.title || series.title || '' })
+)
 
 const album = MUSIC[0]
 </script>
@@ -76,7 +79,9 @@ const album = MUSIC[0]
       <span class="mono num">03</span>
       <span class="label">{{ t.nav.photo }}</span>
       <span class="desc">{{ t.indexPhoto }}</span>
-      <span v-if="photoPreview" class="preview single"><img :src="photoPreview.src" :alt="photoPreview.alt" loading="lazy" /></span>
+      <span v-if="photoPreview.length" class="preview strip">
+        <img v-for="p in photoPreview" :key="p.src" :src="p.src" :alt="p.alt" loading="lazy" />
+      </span>
       <span v-else class="preview placeholder" />
       <span class="arr"><AppIcon name="arrow" :size="22" /></span>
     </RouterLink>
@@ -135,7 +140,7 @@ const album = MUSIC[0]
 .venues { border: 1px solid var(--rule); background: var(--bg); padding: 12px; display: flex; flex-direction: column; justify-content: space-between; }
 .venue-list { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
 .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
-.strip img, .single img { width: 100%; height: 100%; object-fit: cover; }
+.strip img { width: 100%; height: 100%; object-fit: cover; }
 .record { background: #111113; color: #F4F4F2; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; }
 .record-span { font-family: var(--mono); font-size: 12px; opacity: .6; }
 .record-foot { display: flex; justify-content: space-between; align-items: flex-end; }
